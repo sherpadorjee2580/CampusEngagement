@@ -1,8 +1,9 @@
 /* General container for the entire feed section */
 .feed {
+  padding-top: 100px;
   display: flex;
   justify-content: center;
-  padding: 20px;
+
   background-color: #f0f2f5; /* Light background for the page */
   min-height: 100vh;
   box-sizing: border-box;
