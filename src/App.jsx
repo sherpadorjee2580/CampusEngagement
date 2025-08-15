@@ -10,20 +10,22 @@ import Sidebar from "./Components/Sidebar/Sidebar"; // Importing the Sidebar com
 import Nav from "./Components/Nav/Nav";
 import SignUp from "./Components/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard";
+import PassForget from "./Components/PassForget/PassForget";
+import Footer from "./Components/Footer/Footer"; // Importing the Footer component
 import { Route, Link, Routes } from "react-router-dom";
-
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<Dashboard />} />
+      <Route path="/" element={<Login />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/community-hub" element={<CommunityHub />} />
       <Route path="/new-event" element={<NewEvent />} />
       <Route path="/user-profile" element={<UserProfile />} />
       <Route path="/explore-events" element={<ExploreEvents />} />
       <Route path="/feed" element={<Feed />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/pass-forget" element={<PassForget />} />
     </Routes>
   );
 };

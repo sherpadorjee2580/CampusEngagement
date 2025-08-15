@@ -1,8 +1,19 @@
 import React from "react";
 import "./Nav.css";
 import { IoMdSearch } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
+
+  const handleSignUp = () => {
+    navigate("/signup");
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -18,12 +29,12 @@ const Navbar = () => {
 
         <div className="navbar-auth">
           <button className="add-event-btn">Add Event</button>
-          <a href="#login" className="auth-link">
+          <button onClick={handleLogin} className="auth-link">
             Log In
-          </a>
-          <a href="#signup" className="auth-link">
+          </button>
+          <button onClick={handleSignUp} className="auth-link">
             Sign Up
-          </a>
+          </button>
         </div>
       </div>
     </nav>
