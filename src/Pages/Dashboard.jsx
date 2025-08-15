@@ -8,7 +8,6 @@ function Dashboard({ events, addEvent }) {
       <Nav />
       <Sidebar />
       <main>
-        {/* Pass events + addEvent via outlet context */}
         <Outlet context={{ events, addEvent }} />
       </main>
     </div>

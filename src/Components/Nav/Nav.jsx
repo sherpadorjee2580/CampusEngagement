@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../../firebase"; // Import auth for signOut
 import { signOut } from "firebase/auth"; // Import signOut function
 
-// Receive isAuthenticated as a prop
 const Navbar = ({ isAuthenticated }) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,18 +20,16 @@ const Navbar = ({ isAuthenticated }) => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate("/login"); // Redirect to login page after successful logout
+      navigate("/login"); 
     } catch (error) {
       console.error("Error logging out:", error);
-      // Optionally show a user-friendly error message
     }
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
-    // You could navigate to an events page with the search query, e.g.:
-    // navigate(`/explore-events?search=${encodeURIComponent(searchQuery)}`);
+   
   };
 
   return (
@@ -42,7 +39,6 @@ const Navbar = ({ isAuthenticated }) => {
           <img src="logo.png" alt="CampusConnect Logo" />
         </div>
 
-        {/* Search bar section */}
         <form onSubmit={handleSearch} className="navbar-search">
           <div className="search-box">
             <IoMdSearch className="search-icon" />
@@ -57,12 +53,10 @@ const Navbar = ({ isAuthenticated }) => {
 
         <div className="navbar-auth">
           {isAuthenticated ? (
-            // If authenticated, show Log Out button
             <button onClick={handleLogout} className="auth-link">
               Log Out
             </button>
           ) : (
-            // If NOT authenticated, show Log In and Sign Up buttons
             <>
               <button onClick={handleLogin} className="auth-link">
                 Log In

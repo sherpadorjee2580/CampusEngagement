@@ -1,14 +1,13 @@
-// src/Components/Calendar/Calendar.jsx
 import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css"; // Default react-calendar styling
-import "./CampusCalendar.css"; // Custom styles for the calendar
+import "react-calendar/dist/Calendar.css"; 
+import "./CampusCalendar.css"; 
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../../firebase"; // Your Firestore instance
+import { db } from "../../firebase"; 
 
 const CampusCalendar = () => {
-  const [date, setDate] = useState(new Date()); // State for the selected date
-  const [events, setEvents] = useState([]); // State to store events from Firestore
+  const [date, setDate] = useState(new Date()); 
+  const [events, setEvents] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -17,16 +16,14 @@ const CampusCalendar = () => {
       setLoading(true);
       setError(null);
       try {
-        // Fetch all events for now. You might want to filter by date later for performance.
         const q = query(collection(db, "events"));
         const querySnapshot = await getDocs(q);
         const fetchedEvents = querySnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
-          // Ensure eventDate is a Date object for comparison if stored as timestamp/string
           eventDate: doc.data().eventDate
             ? doc.data().eventDate.toDate()
-            : null, // Convert Firestore Timestamp to JS Date
+            : null, 
         }));
         setEvents(fetchedEvents);
       } catch (err) {
@@ -38,14 +35,11 @@ const CampusCalendar = () => {
     };
 
     fetchEvents();
-  }, []); // Run once on component mount
+  }, []); 
 
-  // Function to determine what content to render for each calendar tile
   const tileContent = ({ date, view }) => {
-    // Only apply content for 'month' view
     if (view === "month") {
       const dayEvents = events.filter((event) => {
-        // Check if event.eventDate is valid and matches the current tile's date
         return (
           event.eventDate &&
           event.eventDate.getFullYear() === date.getFullYear() &&
@@ -68,10 +62,9 @@ const CampusCalendar = () => {
         );
       }
     }
-    return null; // No content for other views or days without events
+    return null; 
   };
 
-  // Function to add a custom class to tiles with events
   const tileClassName = ({ date, view }) => {
     if (view === "month") {
       const dayHasEvents = events.some((event) => {
@@ -96,13 +89,12 @@ const CampusCalendar = () => {
         <Calendar
           onChange={setDate}
           value={date}
-          tileContent={tileContent} // Custom content inside tiles
-          tileClassName={tileClassName} // Custom class names for tiles
-          className="react-calendar-custom" // Apply your custom styling
+          tileContent={tileContent} 
+          tileClassName={tileClassName} 
+          className="react-calendar-custom" 
         />
       )}
 
-      {/* Display events for the selected date */}
       <div className="selected-date-events">
         <h3>Events on {date.toDateString()}</h3>
         {events.filter(

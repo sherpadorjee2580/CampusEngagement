@@ -1,26 +1,23 @@
-/* General container for the entire feed section */
 .feed {
   padding-top: 100px;
   display: flex;
   justify-content: center;
 
-  background-color: #f0f2f5; /* Light background for the page */
+  background-color: #f0f2f5;
   min-height: 100vh;
   box-sizing: border-box;
 }
 
-/* Inner container for the feed content (max width) */
 .feed-container {
   background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 700px; /* Max width for the feed area */
+  max-width: 700px;
   box-sizing: border-box;
 }
 
-/* Title of the feed section */
 .feed-title {
   font-size: 24px;
   font-weight: 700;
@@ -30,7 +27,6 @@
   border-bottom: 1px solid #eeeeee;
 }
 
-/* Create New Post Section */
 .feed-createPost {
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
@@ -59,7 +55,7 @@
   flex-grow: 1;
   padding: 12px 18px;
   border: 1px solid #dddddd;
-  border-radius: 25px; /* Pill shape */
+  border-radius: 25px;
   font-size: 16px;
   color: #333333;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -72,20 +68,20 @@
 }
 
 .feed-imageUploadInput {
-  display: none; /* Hide the default file input */
+  display: none;
 }
 
 .feed-addPhotoButton {
-  background-color: #6a5acd; /* Primary accent color */
+  background-color: #6a5acd;
   color: #ffffff;
   width: 45px;
   height: 45px;
-  border-radius: 50%; /* Make it round */
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 28px;
-  line-height: 1; /* Adjust for vertical centering of '+' */
+  line-height: 1;
   font-weight: 300;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
@@ -108,10 +104,10 @@
 
 .feed-imagePreview {
   width: 100%;
-  max-height: 300px; /* Limit height for preview */
-  object-fit: contain; /* Contain the image within its bounds */
+  max-height: 300px;
+  object-fit: contain;
   display: block;
-  background-color: #f9f9f9; /* Background for images with transparency */
+  background-color: #f9f9f9;
 }
 
 .feed-removeImageButton {
@@ -146,7 +142,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
-  width: 100%; /* Full width button */
+  width: 100%;
   margin-top: 15px;
 }
 
@@ -160,7 +156,6 @@
   cursor: not-allowed;
 }
 
-/* Individual Post Card Styling */
 .feed-postCard {
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
@@ -171,7 +166,7 @@
 }
 
 .feed-postCard:last-child {
-  margin-bottom: 0; /* No margin after the last post */
+  margin-bottom: 0;
 }
 
 .feed-postHeader {
@@ -207,7 +202,7 @@
 
 .feed-postImageContainer {
   width: 100%;
-  max-height: 450px; /* Limit image height */
+  max-height: 450px;
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -233,12 +228,12 @@
   color: #555555;
   line-height: 1.6;
   margin-bottom: 15px;
-  white-space: pre-wrap; /* Preserves whitespace and line breaks for posts */
+  white-space: pre-wrap;
 }
 
 .feed-postActions {
   display: flex;
-  justify-content: space-around; /* Distribute buttons evenly */
+  justify-content: space-around;
   align-items: center;
   border-top: 1px solid #f0f0f0;
   padding-top: 15px;
@@ -254,7 +249,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: color 0.2s ease, transform 0.1s ease;
-  user-select: none; /* Prevent text selection on click */
+  user-select: none;
 }
 
 .feed-actionButton:hover {
@@ -263,11 +258,10 @@
 }
 
 .feed-actionButton-liked {
-  color: #ff4d4d; /* Red for liked state */
+  color: #ff4d4d;
   font-weight: 700;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .feed-container {
     padding: 20px;
@@ -321,14 +315,12 @@
   }
 
   .feed-createPostHeader {
-    flex-wrap: wrap; /* Allow items to wrap */
+    flex-wrap: wrap;
     justify-content: center;
   }
 
   .feed-postInput {
-    width: calc(
-      100% - 60px
-    ); /* Adjust width to make room for button on new line */
+    width: calc(100% - 60px);
     margin-top: 10px;
   }
 
@@ -338,7 +330,7 @@
   }
 
   .feed-postActions {
-    flex-direction: column; /* Stack actions vertically */
+    flex-direction: column;
     gap: 10px;
   }
 }

@@ -1,12 +1,10 @@
-/* src/Components/Calendar/Calendar.css */
-
 .calendar-section {
   padding: 60px 20px;
   background-color: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  max-width: 800px; /* Adjust as needed */
-  margin: 20px auto; /* Center the calendar */
+  max-width: 800px; 
+  margin: 20px auto; 
   text-align: center;
 }
 
@@ -16,18 +14,16 @@
   font-size: 28px;
 }
 
-/* Custom styling for react-calendar */
 .react-calendar-custom {
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   font-family: Arial, Helvetica, sans-serif;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
   width: 100%;
-  max-width: 600px; /* Max width for the calendar itself */
-  margin: 0 auto 30px auto; /* Center calendar and add space below */
+  max-width: 600px; 
+  margin: 0 auto 30px auto; 
 }
 
-/* Header (navigation) styles */
 .react-calendar-custom .react-calendar__navigation {
   display: flex;
   margin-bottom: 10px;
@@ -58,14 +54,10 @@
   cursor: not-allowed;
 }
 
-/* Weekday short names (Mon, Tue, etc.) */
 .react-calendar-custom .react-calendar__month-view__weekdays__weekday abbr {
-  text-decoration: none; /* Remove underline */
+  text-decoration: none; 
   font-weight: bold;
   color: #666;
   font-size: 14px;
 }
 
-/* Day tiles */
-.react-calendar-custom .react-calendar__tile {
-  background: n

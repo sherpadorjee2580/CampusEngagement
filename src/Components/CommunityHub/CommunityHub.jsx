@@ -279,7 +279,6 @@ const CommunityHub = () => {
     document.body.style.overflow = "unset"; // Restore scrolling
   };
 
-  // Close modal on escape key
   React.useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape" && isModalOpen) {
@@ -376,7 +375,6 @@ const CommunityHub = () => {
         </div>
       </div>
 
-      {/* Modal Overlay */}
       {isModalOpen && selectedGroup && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
