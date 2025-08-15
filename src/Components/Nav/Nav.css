@@ -40,14 +40,16 @@
   color: #17a2b8;
 }
 
+/* Updated search bar styling */
 .navbar-search {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e0e0e0;
-  height: 50px;
+  height: 40px;
   width: 500px;
   border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  padding: 0 10px;
 }
 
 .search-box {
@@ -55,9 +57,9 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
 }
+
 .search-icon {
   color: #333;
   font-size: 20px;
@@ -67,14 +69,8 @@
   outline: none;
   font-size: 14px;
   border: none;
-}
-
-.search-box {
-  transform: translateY(-50%);
-  height: 18px;
-  width: 18px;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .navbar-auth {
@@ -103,6 +99,9 @@
   color: #333;
   font-weight: 600;
   transition: color 0.3s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .auth-link:hover {
