@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from "react"; // Import useState and useEffect
+import React, { useState, useEffect } from "react";
 import "./ExploreEvents.css";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
-// The main ExploreEvents component
 const ExploreEvents = () => {
   const navigate = useNavigate();
-  // Get the 'events' array from the Outlet Context (provided by Dashboard/App.jsx)
-  const { events } = useOutletContext(); // This `events` is your master list
 
-  // State for search and filters
+  const { events } = useOutletContext();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [filterDate, setFilterDate] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
   const [filterLocation, setFilterLocation] = useState("");
-  const [filteredEvents, setFilteredEvents] = useState(events); // State for displayed events
+  const [filteredEvents, setFilteredEvents] = useState(events);
 
-  // Update filtered events whenever events or filters change
   useEffect(() => {
     let currentFilteredEvents = events;
 
-    // 1. Apply Search Term
     if (searchTerm) {
       const lowerCaseSearchTerm = searchTerm.toLowerCase();
       currentFilteredEvents = currentFilteredEvents.filter(
@@ -31,24 +27,18 @@ const ExploreEvents = () => {
       );
     }
 
-    // 2. Apply Date Filter
     if (filterDate) {
       currentFilteredEvents = currentFilteredEvents.filter((event) => {
-        // Assuming event.date is in a format like "Month Day, Year"
-        // We need to parse it or ensure consistency for comparison
-        // For simple string comparison, ensure exact match if filterDate is a full date string
         return event.date === filterDate;
       });
     }
 
-    // 3. Apply Category Filter
     if (filterCategory) {
       currentFilteredEvents = currentFilteredEvents.filter(
         (event) => event.category === filterCategory
       );
     }
 
-    // 4. Apply Location Filter
     if (filterLocation) {
       currentFilteredEvents = currentFilteredEvents.filter(
         (event) => event.location === filterLocation
@@ -56,21 +46,16 @@ const ExploreEvents = () => {
     }
 
     setFilteredEvents(currentFilteredEvents);
-  }, [events, searchTerm, filterDate, filterCategory, filterLocation]); // Re-run effect when these change
+  }, [events, searchTerm, filterDate, filterCategory, filterLocation]);
 
   const handleAddEvent = () => {
     navigate("/new-event");
   };
 
   const handleApplyFilters = (e) => {
-    e.preventDefault(); // Prevent form submission if this were a form
-    // The useEffect hook already handles applying filters when state changes,
-    // but having this function allows for a dedicated "Apply Filters" button action
-    // if you had a different logic, or for future API calls.
-    // For now, it just ensures the filters are applied.
+    e.preventDefault();
   };
 
-  // Extract unique values for dropdowns (optional, but good for real data)
   const uniqueDates = [...new Set(events.map((event) => event.date))].sort();
   const uniqueCategories = [
     ...new Set(events.map((event) => event.category)),
@@ -87,8 +72,6 @@ const ExploreEvents = () => {
           Discover and participate in a wide range of campus activities and
           gatherings.
         </span>
-
-        {/* Add Event Button */}
         <div className="exploreEvent-addEventSection">
           <button
             onClick={handleAddEvent}
@@ -97,8 +80,7 @@ const ExploreEvents = () => {
             + Add New Event
           </button>
         </div>
-
-        {/* Start of the filter form section */}
+        \
         <div className="exploreEvent-filterForm">
           <input
             type="text"
@@ -141,9 +123,6 @@ const ExploreEvents = () => {
           </select>
           <button onClick={handleApplyFilters}>Apply Filters</button>
         </div>
-        {/* End of the filter form section */}
-
-        {/* Display filtered events */}
         <div className="exploreEvent-eventBoxContainer">
           {filteredEvents.length === 0 ? (
             <p style={{ textAlign: "center", marginTop: "20px" }}>

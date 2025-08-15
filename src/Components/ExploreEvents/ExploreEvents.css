@@ -1,4 +1,3 @@
-/* Base styles for the main section */
 body {
   margin: 0;
   background-color: rgb(255, 255, 255);
@@ -7,19 +6,17 @@ body {
 }
 
 .exploreEvent {
-  /* Adjusted padding to make sure it starts below the fixed navbar */
   padding-top: calc(40px + 15px * 2 + 1rem);
-  /* ADDED padding for the sidebar on wider screens */
+
   padding-left: 10rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;
-  transition: padding-left 0.3s ease-in-out; /* Add a smooth transition for the padding */
+  transition: padding-left 0.3s ease-in-out;
 }
 
-/* Event Section Styling */
 .exploreEvent-container {
   display: flex;
   flex-direction: column;
@@ -38,7 +35,6 @@ body {
   margin-bottom: 2rem;
 }
 
-/* Filter form styling */
 .exploreEvent-filterForm {
   display: flex;
   flex-wrap: wrap;
@@ -57,7 +53,7 @@ body {
 }
 
 .exploreEvent-filterForm input {
-  flex-grow: 1; /* Allows search input to take up available space */
+  flex-grow: 1;
 }
 
 .exploreEvent-filterForm select {
@@ -77,7 +73,6 @@ body {
   background-color: #0056b3;
 }
 
-/* Event grid layout using CSS Grid for responsiveness */
 .exploreEvent-eventBoxContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -85,7 +80,6 @@ body {
   width: 100%;
 }
 
-/* Individual event card styling */
 .exploreEvent-eventBox {
   background-color: #fff;
   border: 1px solid #eee;
@@ -156,46 +150,41 @@ body {
   margin: 1rem;
   align-self: flex-start;
 }
-/* src/Components/ExploreEvents/ExploreEvents.css */
-
-/* ... (Your existing CSS) ... */
 
 .exploreEvent-addEventSection {
   margin-top: 20px;
-  margin-bottom: 30px; /* Space between button and filter form */
-  text-align: center; /* Center the button */
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .exploreEvent-addEventButton {
-  display: inline-block; /* Allows padding and margin */
+  display: inline-block;
   padding: 12px 25px;
-  background-color: #007bff; /* Primary blue color */
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px; /* Slightly rounded corners */
+  border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  text-decoration: none; /* Remove underline from Link */
+  text-decoration: none;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Subtle shadow */
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
 }
 
 .exploreEvent-addEventButton:hover {
-  background-color: #0056b3; /* Darker blue on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .exploreEvent-addEventButton:active {
-  background-color: #004085; /* Even darker on click */
-  transform: translateY(0); /* Return to original position */
+  background-color: #004085;
+  transform: translateY(0);
 }
 
-/* Responsive design adjustments for smaller screens */
 @media (max-width: 768px) {
   .exploreEvent {
-    /* Adjusted padding for smaller screens where the sidebar is hidden */
-    padding-left: 2rem; /* Reduced padding for smaller screens */
+    padding-left: 2rem;
     padding-right: 2rem;
   }
   .exploreEvent-container {
@@ -213,7 +202,6 @@ body {
   }
 }
 
-/* This media query ensures the padding is applied only when the sidebar is visible */
 @media (min-width: 769px) {
   .exploreEvent {
     padding-left: 10rem;
