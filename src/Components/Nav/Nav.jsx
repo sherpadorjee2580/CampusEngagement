@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
-import React, { useState } from "react";
->>>>>>> 89438745cbca2d3caff8aa4574bddd48c6ffbe72
 import "./Nav.css";
 import { IoMdSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
