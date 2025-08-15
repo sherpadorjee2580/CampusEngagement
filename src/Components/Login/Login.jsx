@@ -1,56 +1,91 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from "firebase/auth"; // Import Firebase Auth functions
-import { auth } from "../../firebase"; // Import the auth instance from your firebase.js
+import {
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signInWithPopup, // Import signInWithPopup
+  GoogleAuthProvider, // Import Google Auth Provider
+  FacebookAuthProvider, // Import Facebook Auth Provider
+  OAuthProvider, // Import for Apple Auth Provider
+} from "firebase/auth";
+import { auth, db } from "../../firebase"; // Import auth and db (for saving user profiles)
+import { doc, setDoc } from "firebase/firestore"; // Import Firestore functions
 
 const Login = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState(""); // State for email input
-  const [password, setPassword] = useState(""); // State for password input
-  const [error, setError] = useState(null); // State for error messages
-  const [resetEmailSent, setResetEmailSent] = useState(false); // State for password reset success
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [resetEmailSent, setResetEmailSent] = useState(false);
+  const [loading, setLoading] = useState(false); // Add loading state
+
+  // Initialize Auth Providers
+  const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
+  const appleProvider = new OAuthProvider("apple.com");
+
+  // Helper function to save user profile to Firestore
+  const saveUserProfileToFirestore = async (user) => {
+    try {
+      await setDoc(
+        doc(db, "users", user.uid),
+        {
+          email: user.email,
+          displayName: user.displayName || "",
+          createdAt: new Date(),
+          // Add other default profile fields if needed
+          bio: "",
+          university: "",
+        },
+        { merge: true }
+      ); // Use merge: true to avoid overwriting existing fields
+      console.log("User profile saved/updated in Firestore for UID:", user.uid);
+    } catch (firestoreError) {
+      console.error("Error saving user profile to Firestore:", firestoreError);
+      setError("Failed to save profile data.");
+    }
+  };
 
   const handleSignUp = () => {
-    navigate("/signup"); // Navigate to your dedicated signup route
+    navigate("/signup");
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-    setError(null); // Clear previous errors
+    e.preventDefault();
+    setError(null);
+    setLoading(true); // Start loading
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // If login is successful, navigate to the dashboard or home page
-      navigate("/");
+      // Optional: Update user profile in Firestore on login (e.g., last login time)
+      await saveUserProfileToFirestore(auth.currentUser);
+      navigate("/dashboard");
     } catch (err) {
-      // Handle Firebase authentication errors
       let errorMessage = "An unknown error occurred.";
       switch (err.code) {
         case "auth/invalid-email":
-          errorMessage = "Invalid email address.";
-          break;
-        case "auth/user-disabled":
-          errorMessage = "This account has been disabled.";
-          break;
         case "auth/user-not-found":
-          errorMessage = "No user found with this email.";
+        case "auth/invalid-credential": // Common for general invalid email/password
+          errorMessage = "Invalid email or password.";
           break;
         case "auth/wrong-password":
           errorMessage = "Incorrect password.";
           break;
-        case "auth/invalid-credential": // For general login failures in v9+
-          errorMessage = "Invalid login credentials.";
+        case "auth/user-disabled":
+          errorMessage = "This account has been disabled.";
           break;
         default:
-          errorMessage = err.message; // Use the raw Firebase message for others
+          errorMessage = err.message;
       }
       setError(errorMessage);
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
   const handleForgotPassword = async (e) => {
-    e.preventDefault(); // Prevent default link behavior
+    e.preventDefault();
     setError(null);
     setResetEmailSent(false);
 
@@ -62,7 +97,7 @@ const Login = () => {
     try {
       await sendPasswordResetEmail(auth, email);
       setResetEmailSent(true);
-      alert("Password reset email sent! Check your inbox.");
+      // alert is generally not preferred for UX; consider a better message display
     } catch (err) {
       let errorMessage = "Failed to send password reset email.";
       switch (err.code) {
@@ -79,14 +114,42 @@ const Login = () => {
     }
   };
 
+  const handleSocialLogin = async (provider) => {
+    setError(null);
+    setLoading(true);
 
-  // Placeholder for social logins - these require separate implementation
-  const handleSocialLogin = (providerName) => {
-    alert(`Continue with ${providerName} is not yet implemented.`);
-    // You would integrate signInWithPopup or signInWithRedirect here
-    // For Google: import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-    // const provider = new GoogleAuthProvider();
-    // signInWithPopup(auth, provider).then(...).catch(...);
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      // Save/update user profile in Firestore
+      await saveUserProfileToFirestore(user);
+
+      navigate("/"); // Navigate after successful social login
+    } catch (err) {
+      let errorMessage = "Social login failed. Please try again.";
+      switch (err.code) {
+        case "auth/popup-closed-by-user":
+          errorMessage = "Login cancelled: Popup closed.";
+          break;
+        case "auth/cancelled-popup-request":
+          errorMessage = "Login cancelled. Please try again.";
+          break;
+        case "auth/account-exists-with-different-credential":
+          errorMessage =
+            "An account with this email already exists. Try logging in with your original method.";
+          break;
+        case "auth/auth-domain-config-required":
+          errorMessage =
+            "Authentication domain configuration required. Please check Firebase settings.";
+          break;
+        default:
+          errorMessage = err.message;
+      }
+      setError(errorMessage);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -94,7 +157,6 @@ const Login = () => {
       <div className="login-container">
         <div className="login-title">Log in to CampusConnect</div>
 
-        {/* Use a form to handle submission for email/password */}
         <form className="login-form" onSubmit={handleLogin}>
           <label htmlFor="email">Email Address</label>
           <input
@@ -104,6 +166,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            disabled={loading}
           />
 
           <label htmlFor="password">Password</label>
@@ -114,15 +177,28 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            disabled={loading}
           />
 
           <div className="login-forgot-password">
-            <a href="#" onClick={handleForgotPassword}>Forgot Password?</a>
+            <a href="#" onClick={handleForgotPassword}>
+              Forgot Password?
+            </a>
           </div>
 
-          <button type="submit" className="login-button login-primary">Log in</button>
+          <button
+            type="submit"
+            className="login-button login-primary"
+            disabled={loading}
+          >
+            {loading ? "Logging In..." : "Log in"} {/* Show loading text */}
+          </button>
           {error && <p className="login-error-message">{error}</p>}
-          {resetEmailSent && <p className="login-success-message">Password reset email sent. Check your inbox.</p>}
+          {resetEmailSent && (
+            <p className="login-success-message">
+              Password reset email sent. Check your inbox.
+            </p>
+          )}
         </form>
 
         <div className="login-divider">
@@ -130,17 +206,37 @@ const Login = () => {
         </div>
 
         <div className="login-social-buttons">
-          {/* These buttons will need their own click handlers and Firebase methods */}
-          <button className="login-button login-social" onClick={() => handleSocialLogin("Email")}>
+          {/* Email button still placeholder as it's not a standard social provider */}
+          <button
+            className="login-button login-social"
+            onClick={() =>
+              alert(
+                "Please use the email/password form above to continue with email."
+              )
+            }
+            disabled={loading}
+          >
             <span className="login-social-icon">✉️</span> Continue with Email
           </button>
-          <button className="login-button login-social" onClick={() => handleSocialLogin("Apple")}>
+          <button
+            className="login-button login-social"
+            onClick={() => handleSocialLogin(appleProvider)}
+            disabled={loading}
+          >
             <span className="login-social-icon"></span> Continue with Apple
           </button>
-          <button className="login-button login-social" onClick={() => handleSocialLogin("Google")}>
+          <button
+            className="login-button login-social"
+            onClick={() => handleSocialLogin(googleProvider)}
+            disabled={loading}
+          >
             <span className="login-social-icon">G</span> Continue with Google
           </button>
-          <button className="login-button login-social" onClick={() => handleSocialLogin("Facebook")}>
+          <button
+            className="login-button login-social"
+            onClick={() => handleSocialLogin(facebookProvider)}
+            disabled={loading}
+          >
             <span className="login-social-icon">f</span> Continue with Facebook
           </button>
         </div>
