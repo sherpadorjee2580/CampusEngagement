@@ -56,7 +56,7 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       await saveUserProfileToFirestore(auth.currentUser);
-      navigate("/dashboard");
+      navigate("/");
     } catch (err) {
       let errorMessage = "An unknown error occurred.";
       switch (err.code) {

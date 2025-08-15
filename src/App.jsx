@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase"; // Assuming './firebase' is correct path
+import { auth } from "./firebase";
 
+// Components
 import CampusCalendar from "./Components/CampusCalendar/CampusCalendar";
 import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard";
 import Feed from "./Components/Feed/Feed";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Outlet,
-} from "react-router-dom";
-import "./App.css";
 import ExploreEvents from "./Components/ExploreEvents/ExploreEvents";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import CommunityHub from "./Components/CommunityHub/CommunityHub";
-import NewEvent from "./Components/NewEvent/NewEvent"; // Import NewEvent component
-// import EventAddedSuccess from "./Components/EventAddedSuccess/EventAddedSuccess"; // If you're not using it, remove this import and its route
+import NewEvent from "./Components/NewEvent/NewEvent";
 import WebWelcome from "./Components/WebWelcome/WebWelcome";
+import Navbar from "./Components/Nav/Nav";
+
+// React Router
+import { Routes, Route, Navigate } from "react-router-dom";
+
+import "./App.css";
 
 const PrivateRoute = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -46,7 +45,7 @@ function App() {
       description: "Celebrate spring with music, food trucks, and art.",
       date: "August 15, 2025",
       time: "6:30am - 6:30pm",
-      location: "University Green",
+      location: "TCMIT",
       category: "Social",
     },
     {
@@ -56,32 +55,52 @@ function App() {
       description: "Workshops and networking with tech leaders.",
       date: "May 16, 2025",
       time: "9:00am - 5:00pm",
-      location: "Engineering Building Auditorium",
+      location: "BIT",
       category: "Academic",
     },
   ]);
 
   const addEvent = (newEvent) => {
-    // Ensure new event gets a unique ID
     setEvents((prev) => [...prev, { id: prev.length + 1, ...newEvent }]);
   };
 
   const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
 
-  const handleWelcomeTimeout = () => {
-    setShowWelcomeScreen(false);
-  };
+  useEffect(() => {
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+      setAuthLoading(false);
+    });
+
+    const timer = setTimeout(() => {
+      setShowWelcomeScreen(false);
+    }, 3000);
+
+    return () => {
+      unsubscribeAuth();
+      clearTimeout(timer);
+    };
+  }, []);
 
   if (showWelcomeScreen) {
-    return <WebWelcome onTimeout={handleWelcomeTimeout} />;
+    return <WebWelcome onTimeout={() => setShowWelcomeScreen(false)} />;
+  }
+
+  if (authLoading) {
+    return <div>Loading application...</div>;
   }
 
   return (
     <>
+      <Navbar isAuthenticated={!!currentUser} />
       <Routes>
+        {/* Public */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        {/* Protected Routes */}
+
+        {/* Protected */}
         <Route
           element={
             <PrivateRoute>
@@ -89,25 +108,29 @@ function App() {
             </PrivateRoute>
           }
         >
+          {/* Default dashboard route */}
           <Route index element={<Feed />} />
+          <Route path="feed" element={<Feed />} />
           <Route path="explore-events" element={<ExploreEvents />} />
           <Route path="communityhub" element={<CommunityHub />} />
           <Route path="user-profile" element={<UserProfile />} />
           <Route path="campus-calendar" element={<CampusCalendar />} />
-          {/* Route for NewEvent, passing addEvent as a prop */}
-          <Route path="new-event" element={<NewEvent addEvent={addEvent} />} />
-          {/* If you're no longer using EventAddedSuccess, remove this route */}
-          {/* <Route path="event-added-success" element={<EventAddedSuccess />} /> */}
+          <Route path="new-event" element={<NewEvent />} />
         </Route>
-        {/* Fallback 404 Route */}
-        <Route path="/" element={<Feed />} />{" "}
-        <Route path="/dashboard" element={<Feed />} />{" "}
-        <Route path="/explore-events" element={<ExploreEvents />} />
-        <Route path="/communityhub" element={<CommunityHub />} />
-        <Route path="/user-profile" element={<UserProfile />} />
-        <Route path="/new-event" element={<NewEvent />} />
-        <Route path="/campus-calendar" element={<CampusCalendar />} />
-        <Route path="/new-event" element={<NewEvent />} />
+
+        {/* Root: go to feed if logged in, else login */}
+        <Route
+          path="/"
+          element={
+            currentUser ? (
+              <Navigate to="/feed" replace />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+
+        {/* 404 */}
         <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>
     </>
