@@ -1,4 +1,3 @@
-
 import React from "react";
 import "./App.css";
 import CommunityHub from "./Components/CommunityHub/CommunityHub";
@@ -7,16 +6,18 @@ import UserProfile from "./Components/UserProfile/UserProfile";
 import ExploreEvents from "./Components/ExploreEvents/ExploreEvents";
 import Feed from "./Components/Feed/Feed";
 import Login from "./Components/Login/Login";
-import Sidebar from "./Components/Sidebar/Sidebar"; // Importing the Sidebar component
-import Nav from "./Components/Nav/Nav"
+import Sidebar from "./Components/Sidebar/Sidebar";
+import Nav from "./Components/Nav/Nav";
+import PassForget from "./Components/PassForget/PassForget";
 
 const App = () => {
   return (
     <div>
-      <Nav/>
+      <Nav />
       <Feed />
       <Login />
       <Sidebar />
+      <PassForget />
     </div>
   );
 };
