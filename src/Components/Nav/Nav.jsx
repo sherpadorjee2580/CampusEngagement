@@ -52,7 +52,6 @@ const Navbar = () => {
         </form>
 
         <div className="navbar-auth">
-          <button className="add-event-btn">Add Event</button>
           <button onClick={handleLogin} className="auth-link">
             Log In
           </button>
