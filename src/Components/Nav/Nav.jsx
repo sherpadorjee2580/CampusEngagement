@@ -15,11 +15,9 @@ const Navbar = () => {
     navigate("/signup");
   };
 
-  
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
-    
   };
 
   return (

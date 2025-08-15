@@ -1,49 +1,42 @@
 import "./Sidebar.css";
-import {
-  FaHome,
-  FaCalendar,
-  FaTicketAlt,
-  FaUser,
-  FaUsers,
-  FaCalendarAlt,
-} from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import { FaHome, FaCalendar, FaUsers, FaCalendarAlt } from "react-icons/fa";
 
 const Sidebar = () => {
   return (
-    <div class="sidebar">
+    <div className="sidebar">
       <div className="sidebar-container">
         <div className="sidebar-title">
-          <ul class="sidebar-menu">
-            <li class="sidebar-menu-item">
-              <a href="dashboard" class="sidebar-menu-link">
+          <ul className="sidebar-menu">
+            <li className="sidebar-menu-item">
+              <NavLink to="/" end className="sidebar-menu-link">
                 <FaHome className="sidebar-icon" />
-                <span class="text-dashboard">Dashboard</span>
-              </a>
+                <span className="text-dashboard">Dashboard</span>
+              </NavLink>
             </li>
-            <li class="sidebar-menu-item">
-              <a href="explore-events" class="sidebar-menu-link">
+            <li className="sidebar-menu-item">
+              <NavLink to="explore-events" className="sidebar-menu-link">
                 <FaCalendar className="sidebar-icon" />
-                <span class="text-events">Events</span>
-              </a>
+                <span className="text-events">Events</span>
+              </NavLink>
             </li>
-
-            <li class="sidebar-menu-item">
-              <a href="communityhub" class="sidebar-menu-link">
+            <li className="sidebar-menu-item">
+              <NavLink to="communityhub" className="sidebar-menu-link">
                 <FaUsers className="sidebar-icon" />
-                <span class="text-communities">Communities</span>
-              </a>
+                <span className="text-communities">Communities</span>
+              </NavLink>
             </li>
-            <li class="sidebar-menu-item">
-              <a href="user-profile" class="sidebar-menu-link">
+            <li className="sidebar-menu-item">
+              <NavLink to="user-profile" className="sidebar-menu-link">
                 <FaUsers className="sidebar-icon" />
-                <span class="text-my-profile">My Profile</span>
-              </a>
+                <span className="text-my-profile">My Profile</span>
+              </NavLink>
             </li>
-            <li class="sidebar-menu-item">
-              <a href="campus-calendar" class="sidebar-menu-link">
+            <li className="sidebar-menu-item">
+              <NavLink to="campus-calendar" className="sidebar-menu-link">
                 <FaCalendarAlt className="sidebar-icon" />
-                <span class="text-my-profile">Calendar</span>
-              </a>
+                <span className="text-my-profile">Calendar</span>
+              </NavLink>
             </li>
           </ul>
         </div>
