@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useState} from "react";
 import "./App.css";
 import CommunityHub from "./Components/CommunityHub/CommunityHub";
 import NewEvent from "./Components/NewEvent/NewEvent";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import ExploreEvents from "./Components/ExploreEvents/ExploreEvents";
 import Feed from "./Components/Feed/Feed";
+import WebWelcome from "./Components/WebWelcome/WebWelcome";
 import Login from "./Components/Login/Login";
-import Sidebar from "./Components/Sidebar/Sidebar"; // Importing the Sidebar component
+import Sidebar from "./Components/Sidebar/Sidebar"; 
 import Nav from "./Components/Nav/Nav";
 import SignUp from "./Components/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard";
 import PassForget from "./Components/PassForget/PassForget";
-import Footer from "./Components/Footer/Footer"; // Importing the Footer component
+import Footer from "./Components/Footer/Footer"; 
 import { Route, Link, Routes } from "react-router-dom";
 
 const App = () => {
+  
+  const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
+
+  const handleWelcomeTimeout = () => {
+    setShowWelcomeScreen(false);
+  };
+
+  if (showWelcomeScreen) {
+    return <WebWelcome onTimeout={handleWelcomeTimeout} />;
+  }
+
   return (
     <Routes>
       <Route path="/" element={<Login />} />

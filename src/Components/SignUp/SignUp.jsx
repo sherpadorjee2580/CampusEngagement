@@ -67,7 +67,7 @@ const SignUp = () => {
 
       console.log("Email signup successful:", user);
       // Navigate to the next step or dashboard
-      navigate("/dashboard"); // Or '/signup/personal-details' if multi-step form
+      navigate("/"); // Or '/signup/personal-details' if multi-step form
     } catch (err) {
       // Handle Firebase authentication errors for email/password
       let errorMessage = "An unknown error occurred.";
@@ -215,7 +215,7 @@ const SignUp = () => {
         </form>
 
         <p className="signup-login-link">
-          Already have an account? <a href="/login">Log In</a>
+          Already have an account? <a href="/">Log In</a>
         </p>
       </div>
     </div>
