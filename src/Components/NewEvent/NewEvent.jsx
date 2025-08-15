@@ -1,4 +1,3 @@
-// NewEventForm.jsx
 import React, { useState } from "react";
 import "./NewEvent.css";
 
@@ -15,7 +14,6 @@ const NewEvent = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send this data to an API
     console.log({
       eventTitle,
       eventDescription,
@@ -149,9 +147,7 @@ const NewEvent = () => {
                   className="newEvent-uploadedImage"
                 />
               ) : (
-                <div className="newEvent-imagePlaceholder">
-                  {/* Placeholder image from the screenshot */}
-                </div>
+                <div className="newEvent-imagePlaceholder"></div>
               )}
               <input
                 type="file"

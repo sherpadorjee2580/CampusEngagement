@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Nav.css";
 import { IoMdSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
 
   const handleLogin = () => {
     navigate("/login");
@@ -12,6 +13,13 @@ const Navbar = () => {
 
   const handleSignUp = () => {
     navigate("/signup");
+  };
+
+  
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log("Searching for:", searchQuery);
+    
   };
 
   return (
@@ -27,8 +35,20 @@ const Navbar = () => {
           <a href="">Services</a>
         </div>
 
+        {/* Search bar section */}
+        <form onSubmit={handleSearch} className="navbar-search">
+          <div className="search-box">
+            <IoMdSearch className="search-icon" />
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        </form>
+
         <div className="navbar-auth">
-          <button className="add-event-btn">Add Event</button>
           <button onClick={handleLogin} className="auth-link">
             Log In
           </button>

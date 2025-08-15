@@ -5,6 +5,7 @@ import {
   FaTicketAlt,
   FaUser,
   FaUsers,
+  FaCalendarAlt,
 } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -36,6 +37,12 @@ const Sidebar = () => {
               <a href="user-profile" class="sidebar-menu-link">
                 <FaUsers className="sidebar-icon" />
                 <span class="text-my-profile">My Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="campus-calendar" class="sidebar-menu-link">
+                <FaCalendarAlt className="sidebar-icon" />
+                <span class="text-my-profile">Calendar</span>
               </a>
             </li>
           </ul>

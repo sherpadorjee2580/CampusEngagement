@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
-  signInWithPopup, // Import signInWithPopup
-  GoogleAuthProvider, // Import Google Auth Provider
-  FacebookAuthProvider, // Import Facebook Auth Provider
-  OAuthProvider, // Import for Apple Auth Provider
+  signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  OAuthProvider,
 } from "firebase/auth";
-import { auth, db } from "../../firebase"; // Import auth and db (for saving user profiles)
-import { doc, setDoc } from "firebase/firestore"; // Import Firestore functions
+import { auth, db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -18,14 +18,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [resetEmailSent, setResetEmailSent] = useState(false);
-  const [loading, setLoading] = useState(false); // Add loading state
+  const [loading, setLoading] = useState(false);
 
-  // Initialize Auth Providers
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
   const appleProvider = new OAuthProvider("apple.com");
 
-  // Helper function to save user profile to Firestore
   const saveUserProfileToFirestore = async (user) => {
     try {
       await setDoc(
@@ -34,12 +32,11 @@ const Login = () => {
           email: user.email,
           displayName: user.displayName || "",
           createdAt: new Date(),
-          // Add other default profile fields if needed
           bio: "",
           university: "",
         },
         { merge: true }
-      ); // Use merge: true to avoid overwriting existing fields
+      );
       console.log("User profile saved/updated in Firestore for UID:", user.uid);
     } catch (firestoreError) {
       console.error("Error saving user profile to Firestore:", firestoreError);
@@ -54,11 +51,10 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(null);
-    setLoading(true); // Start loading
+    setLoading(true);
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Optional: Update user profile in Firestore on login (e.g., last login time)
       await saveUserProfileToFirestore(auth.currentUser);
       navigate("/dashboard");
     } catch (err) {
@@ -66,7 +62,7 @@ const Login = () => {
       switch (err.code) {
         case "auth/invalid-email":
         case "auth/user-not-found":
-        case "auth/invalid-credential": // Common for general invalid email/password
+        case "auth/invalid-credential":
           errorMessage = "Invalid email or password.";
           break;
         case "auth/wrong-password":
@@ -80,7 +76,7 @@ const Login = () => {
       }
       setError(errorMessage);
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
 
@@ -97,7 +93,6 @@ const Login = () => {
     try {
       await sendPasswordResetEmail(auth, email);
       setResetEmailSent(true);
-      // alert is generally not preferred for UX; consider a better message display
     } catch (err) {
       let errorMessage = "Failed to send password reset email.";
       switch (err.code) {
@@ -122,10 +117,9 @@ const Login = () => {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // Save/update user profile in Firestore
       await saveUserProfileToFirestore(user);
 
-      navigate("/"); // Navigate after successful social login
+      navigate("/");
     } catch (err) {
       let errorMessage = "Social login failed. Please try again.";
       switch (err.code) {
@@ -191,7 +185,7 @@ const Login = () => {
             className="login-button login-primary"
             disabled={loading}
           >
-            {loading ? "Logging In..." : "Log in"} {/* Show loading text */}
+            {loading ? "Logging In..." : "Log in"}
           </button>
           {error && <p className="login-error-message">{error}</p>}
           {resetEmailSent && (
@@ -206,7 +200,6 @@ const Login = () => {
         </div>
 
         <div className="login-social-buttons">
-          {/* Email button still placeholder as it's not a standard social provider */}
           <button
             className="login-button login-social"
             onClick={() =>

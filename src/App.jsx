@@ -9,6 +9,7 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
 import "./App.css";
+import CampusCalendar from "./Components/CampusCalendar/CampusCalendar";
 import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp"; 
 import Dashboard from "./Pages/Dashboard"; 
@@ -76,6 +77,8 @@ function App() {
         <Route path="/explore-events" element={<ExploreEvents />} />
         <Route path="/communityhub" element={<CommunityHub />} />
         <Route path="/user-profile" element={<UserProfile />} />
+        <Route path="/new-event" element={<NewEvent />} />
+        <Route path="/campus-calendar" element={<CampusCalendar />} />
         <Route path="/new-event" element={<NewEvent />} />
       </Route>
 
