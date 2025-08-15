@@ -2,28 +2,25 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./NewEvent.css";
 
-// No Firebase imports needed for this version
-
-// Receive addEvent as a prop
 const NewEvent = ({ addEvent }) => {
   const navigate = useNavigate();
 
   const [eventTitle, setEventTitle] = useState("");
   const [eventDescription, setEventDescription] = useState("");
-  const [eventDate, setEventDate] = useState(""); // Initialize as empty for better UX
-  const [eventTime, setEventTime] = useState(""); // Initialize as empty for better UX
+  const [eventDate, setEventDate] = useState(""); 
+  const [eventTime, setEventTime] = useState(""); 
   const [eventLocation, setEventLocation] = useState("");
-  const [eventCategory, setEventCategory] = useState("Academic"); // Default category
-  const [eventHeaderImageFile, setEventHeaderImageFile] = useState(null); // Stores the actual File object
-  const [eventHeaderImageUrl, setEventHeaderImageUrl] = useState(""); // Stores URL for preview
-  const [loading, setLoading] = useState(false); // Still good to have for general form submission
-  const [error, setError] = useState(null); // Still good to have for general form submission
+  const [eventCategory, setEventCategory] = useState("Academic"); 
+  const [eventHeaderImageFile, setEventHeaderImageFile] = useState(null); 
+  const [eventHeaderImageUrl, setEventHeaderImageUrl] = useState(""); 
+  const [loading, setLoading] = useState(false); 
+  const [error, setError] = useState(null); 
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       setEventHeaderImageFile(file);
-      setEventHeaderImageUrl(URL.createObjectURL(file)); // For local preview
+      setEventHeaderImageUrl(URL.createObjectURL(file)); 
     } else {
       setEventHeaderImageFile(null);
       setEventHeaderImageUrl("");
@@ -31,30 +28,24 @@ const NewEvent = ({ addEvent }) => {
   };
 
   const handleSubmit = (e) => {
-    // Now synchronous as no async Firebase calls
     e.preventDefault();
-    setLoading(true); // Still show loading while processing
+    setLoading(true); 
     setError(null);
 
-    // Prepare data for the `addEvent` function
-    // For now, we'll store the local URL for the image
     const newEvent = {
-      name: eventTitle, // Use 'name' to match your ExploreEvents data structure
+      name: eventTitle, 
       description: eventDescription,
-      date: eventDate, // Storing as string for simplicity without Firebase date objects
-      time: eventTime, // Storing as string
+      date: eventDate, 
+      time: eventTime, 
       location: eventLocation,
       category: eventCategory,
-      image: eventHeaderImageUrl || "placeholder-event.jpg", // Use local URL or a placeholder
+      image: eventHeaderImageUrl || "placeholder-event.jpg", 
     };
 
-    // Call the addEvent function passed from App.jsx
     addEvent(newEvent);
 
     setLoading(false);
-    // Redirect to the explore events page or a success message
-    navigate("/explore-events"); // Redirect directly to explore events
-    // OR if you want a success page: navigate("/event-added-success");
+    navigate("/explore-events"); 
   };
 
   return (

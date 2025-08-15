@@ -6,7 +6,6 @@ const Footer = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Animate elements when component mounts
     const timer = setTimeout(() => setIsVisible(true), 100);
     return () => clearTimeout(timer);
   }, []);
@@ -26,8 +25,6 @@ const Footer = () => {
   const handleLinkClick = (e, href) => {
     e.preventDefault();
     console.log("Link clicked:", href);
-    // Add your navigation logic here
-    // Example: navigate(href) or window.location.href = href
   };
 
   return (
