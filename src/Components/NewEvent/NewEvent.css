@@ -186,7 +186,7 @@
 }
 
 .newEvent-createButton {
-  background-color: #28a745; /* Green for create button */
+  background-color: #28a745;
   color: #ffffff;
 }
 
@@ -194,7 +194,6 @@
   background-color: #218838;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
   .newEvent-container {
     padding: 20px 25px;
@@ -206,7 +205,7 @@
   }
 
   .newEvent-column:first-child {
-    margin-bottom: 25px; /* Add space between stacked columns */
+    margin-bottom: 25px;
   }
 
   .newEvent-actions {
