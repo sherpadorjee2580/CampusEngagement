@@ -8,6 +8,7 @@
   background-color: #f0f2f5; /* Light background for the page */
   padding: 20px;
   box-sizing: border-box;
+  margin-top: 60px;
 }
 
 .newEvent-container {

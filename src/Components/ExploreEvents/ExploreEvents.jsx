@@ -1,5 +1,6 @@
 import React from "react";
 import "./ExploreEvents.css";
+import { Link } from "react-router-dom"; // Import Link for navigation
 
 // The main ExploreEvents component containing all logic and JSX
 const ExploreEvents = () => {
@@ -114,6 +115,14 @@ const ExploreEvents = () => {
           Discover and participate in a wide range of campus activities and
           gatherings.
         </span>
+
+        {/* Add Event Button */}
+        <div className="exploreEvent-addEventSection">
+          <Link to="/new-event" className="exploreEvent-addEventButton">
+            + Add New Event
+          </Link>
+        </div>
+
         {/* Start of the filter form section */}
         <div className="exploreEvent-filterForm">
           <input type="text" placeholder="Search for events..." />
@@ -136,21 +145,26 @@ const ExploreEvents = () => {
         <div className="exploreEvent-eventBoxContainer">
           {eventsData.map((event) => (
             <div className="exploreEvent-eventBox" key={event.id}>
+              {/* Note: The 'image' paths are relative. You'll need to ensure these images are
+                  available in your public folder or replace them with actual Firebase Storage URLs later. */}
               <img src={event.image} alt={event.name} />
               <span className="exploreEvent-eventName">{event.name}</span>
               <span className="exploreEvent-eventDescription">
                 {event.description}
               </span>
               <div className="exploreEvent-eventDate">
-                <div className="exploreEvent-eventDateLogo"></div>
+                <div className="exploreEvent-eventDateLogo"></div>{" "}
+                {/* Placeholder for an icon */}
                 <span className="exploreEvent-eventBoxText">{event.date}</span>
               </div>
               <div className="exploreEvent-eventTime">
-                <div className="exploreEvent-eventDateLogo"></div>
+                <div className="exploreEvent-eventDateLogo"></div>{" "}
+                {/* Placeholder for an icon */}
                 <span className="exploreEvent-eventBoxText">{event.time}</span>
               </div>
               <div className="exploreEvent-eventLocation">
-                <div className="exploreEvent-eventLocationLogo"></div>
+                <div className="exploreEvent-eventLocationLogo"></div>{" "}
+                {/* Placeholder for an icon */}
                 <span className="exploreEvent-eventBoxText">
                   {event.location}
                 </span>

@@ -1,4 +1,3 @@
-import React from "react";
 import "./Nav.css";
 import { IoMdSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";

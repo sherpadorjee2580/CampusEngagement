@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"; // Import Outlet
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
+import CampusCalendar from "./Components/CampusCalendar/CampusCalendar";
 
 // Import your components
 import Login from "./Components/Login/Login";
@@ -71,6 +72,8 @@ function App() {
         <Route path="/explore-events" element={<ExploreEvents />} />
         <Route path="/communityhub" element={<CommunityHub />} />
         <Route path="/user-profile" element={<UserProfile />} />
+        <Route path="/new-event" element={<NewEvent />} />
+        <Route path="/campus-calendar" element={<CampusCalendar />} />
         <Route path="/new-event" element={<NewEvent />} />
       </Route>
 
