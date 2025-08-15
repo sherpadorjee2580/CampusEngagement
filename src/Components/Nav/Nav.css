@@ -19,7 +19,7 @@
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
-  gap: 100px; /* Reduced the gap to bring components closer together */
+  gap: 350px; /* Reduced the gap to bring components closer together */
 }
 
 /* Logo styling */

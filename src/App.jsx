@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase"; // Assuming './firebase' is correct path
 
@@ -8,11 +7,19 @@ import Login from "./Components/Login/Login";
 import SignUp from "./Components/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard";
 import Feed from "./Components/Feed/Feed";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
+import "./App.css";
 import ExploreEvents from "./Components/ExploreEvents/ExploreEvents";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import CommunityHub from "./Components/CommunityHub/CommunityHub";
 import NewEvent from "./Components/NewEvent/NewEvent"; // Import NewEvent component
 // import EventAddedSuccess from "./Components/EventAddedSuccess/EventAddedSuccess"; // If you're not using it, remove this import and its route
+import WebWelcome from "./Components/WebWelcome/WebWelcome";
 
 const PrivateRoute = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -59,34 +66,51 @@ function App() {
     setEvents((prev) => [...prev, { id: prev.length + 1, ...newEvent }]);
   };
 
+  const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
+
+  const handleWelcomeTimeout = () => {
+    setShowWelcomeScreen(false);
+  };
+
+  if (showWelcomeScreen) {
+    return <WebWelcome onTimeout={handleWelcomeTimeout} />;
+  }
+
   return (
-    <Routes>
-      {/* Public Routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-
-      {/* Protected Routes */}
-      <Route
-        element={
-          <PrivateRoute>
-            <Dashboard events={events} addEvent={addEvent} />
-          </PrivateRoute>
-        }
-      >
-        <Route index element={<Feed />} />
-        <Route path="explore-events" element={<ExploreEvents />} />
-        <Route path="communityhub" element={<CommunityHub />} />
-        <Route path="user-profile" element={<UserProfile />} />
-        <Route path="campus-calendar" element={<CampusCalendar />} />
-        {/* Route for NewEvent, passing addEvent as a prop */}
-        <Route path="new-event" element={<NewEvent addEvent={addEvent} />} />
-        {/* If you're no longer using EventAddedSuccess, remove this route */}
-        {/* <Route path="event-added-success" element={<EventAddedSuccess />} /> */}
-      </Route>
-
-      {/* Fallback 404 Route */}
-      <Route path="*" element={<div>404 - Page Not Found</div>} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        {/* Protected Routes */}
+        <Route
+          element={
+            <PrivateRoute>
+              <Dashboard events={events} addEvent={addEvent} />
+            </PrivateRoute>
+          }
+        >
+          <Route index element={<Feed />} />
+          <Route path="explore-events" element={<ExploreEvents />} />
+          <Route path="communityhub" element={<CommunityHub />} />
+          <Route path="user-profile" element={<UserProfile />} />
+          <Route path="campus-calendar" element={<CampusCalendar />} />
+          {/* Route for NewEvent, passing addEvent as a prop */}
+          <Route path="new-event" element={<NewEvent addEvent={addEvent} />} />
+          {/* If you're no longer using EventAddedSuccess, remove this route */}
+          {/* <Route path="event-added-success" element={<EventAddedSuccess />} /> */}
+        </Route>
+        {/* Fallback 404 Route */}
+        <Route path="/" element={<Feed />} />{" "}
+        <Route path="/dashboard" element={<Feed />} />{" "}
+        <Route path="/explore-events" element={<ExploreEvents />} />
+        <Route path="/communityhub" element={<CommunityHub />} />
+        <Route path="/user-profile" element={<UserProfile />} />
+        <Route path="/new-event" element={<NewEvent />} />
+        <Route path="/campus-calendar" element={<CampusCalendar />} />
+        <Route path="/new-event" element={<NewEvent />} />
+        <Route path="*" element={<div>404 - Page Not Found</div>} />
+      </Routes>
+    </>
   );
 }
 
