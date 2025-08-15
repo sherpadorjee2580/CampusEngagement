@@ -7,13 +7,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #3767DA; /* The blue background color */
+  background: linear-gradient(to right, white, aqua);
   z-index: 9999;
 }
 
 .webwelcome-container {
-  background-color: #fff;
-  color: #3767DA;
+  background: linear-gradient(to right, aqua, white);
+  color: black;
   border-radius: 10px;
   padding: 40px;
   text-align: center;
@@ -21,8 +21,8 @@
 }
 
 .webwelcome-logo img {
-  height: 60px;
-  margin-bottom: 20px;
+height: 100px;
+margin-bottom: 20px;
 }
 
 .webwelcome-subtitle {

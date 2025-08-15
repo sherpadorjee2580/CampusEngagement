@@ -10,7 +10,7 @@ const WebWelcome = ({ onTimeout }) => {
       if (onTimeout) {
         onTimeout();
       }
-    }, 2000);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, [onTimeout]); 
@@ -25,8 +25,8 @@ const WebWelcome = ({ onTimeout }) => {
         <div className="webwelcome-logo">
           <img src={"logo.png"} alt="Logo" />
         </div>
-        <p className="webwelcome-subtitle">Connecting Campus Communities, One</p>
-        <p className="webwelcome-subtitle">Click at a Time.</p>
+        <p className="webwelcome-subtitle">Beyond the Classroom, a Connected Community</p>
+        {/* <p className="webwelcome-subtitle">and Social Campus Life</p> */}
       </div>
     </div>
   );
