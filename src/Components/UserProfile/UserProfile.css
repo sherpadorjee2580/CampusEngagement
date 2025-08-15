@@ -1,10 +1,11 @@
 .userProfile {
   display: flex;
   justify-content: center;
-  align-items: flex-start; 
+  align-items: flex-start;
   min-height: 100vh;
-  background-color: #f0f2f5; 
-  padding: 30px;
+  background-color: #f0f2f5;
+  padding-top: 5rem;
+
   box-sizing: border-box;
 }
 
@@ -14,9 +15,9 @@
   border-radius: 15px;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 800px; 
+  max-width: 800px;
   box-sizing: border-box;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .userProfile-header {
@@ -35,7 +36,7 @@
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .userProfile-avatar {
@@ -77,7 +78,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  align-items: flex-start;
 }
 
 .userProfile-name {
@@ -105,7 +106,7 @@
 
 .userProfile-editButton,
 .userProfile-saveButton {
-  background-color: #6a5acd; 
+  background-color: #6a5acd;
   color: #ffffff;
   padding: 10px 22px;
   border: none;
@@ -184,7 +185,7 @@
 }
 
 .userProfile-input {
-  width: calc(100% - 24px); 
+  width: calc(100% - 24px);
   padding: 10px 12px;
   border: 1px solid #dddddd;
   border-radius: 8px;
@@ -207,8 +208,8 @@
 }
 
 .userProfile-tag {
-  background-color: #e0e7ff; 
-  color: #4a3e9c; 
+  background-color: #e0e7ff;
+  color: #4a3e9c;
   padding: 8px 15px;
   border-radius: 20px;
   font-size: 14px;
@@ -225,12 +226,12 @@
   font-size: 16px;
   color: #555555;
   margin-bottom: 8px;
-  padding-left: 25px; 
+  padding-left: 25px;
   position: relative;
 }
 
 .userProfile-listItem::before {
-  content: "•"; 
+  content: "•";
   color: #6a5acd;
   font-size: 20px;
   position: absolute;
@@ -262,7 +263,7 @@
 }
 
 .userProfile-socialLink i {
-  font-size: 18px; 
+  font-size: 18px;
 }
 
 .userProfile-socialInputGroup {
@@ -281,37 +282,37 @@
   font-size: 16px;
   color: #666666;
   font-weight: 600;
-  min-width: 80px; 
+  min-width: 80px;
 }
 
 .userProfile-saveMessage {
-  position: fixed; 
-  bottom: 30px; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  background-color: #4caf50; 
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
   color: white;
   padding: 15px 25px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  z-index: 1000; 
+  z-index: 1000;
   font-size: 16px;
   font-weight: 600;
-  opacity: 0; 
-  animation: fadeInOut 3s forwards; 
+  opacity: 0;
+  animation: fadeInOut 3s forwards;
   display: flex;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
 @keyframes fadeInOut {
   0% {
     opacity: 0;
-    transform: translateX(-50%) translateY(20px); 
+    transform: translateX(-50%) translateY(20px);
   }
   10% {
     opacity: 1;
-    transform: translateX(-50%) translateY(0); 
+    transform: translateX(-50%) translateY(0);
   }
   90% {
     opacity: 1;
@@ -319,7 +320,7 @@
   }
   100% {
     opacity: 0;
-    transform: translateX(-50%) translateY(20px); 
+    transform: translateX(-50%) translateY(20px);
   }
 }
 
@@ -347,7 +348,7 @@
   }
 
   .userProfile-detailsGrid {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 
   .userProfile-detailItem {
