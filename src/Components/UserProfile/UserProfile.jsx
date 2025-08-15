@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react"; 
+import React, { useState, useEffect } from "react";
 import "./UserProfile.css";
 
 const UserProfile = () => {
   const [user, setUser] = useState({
-    profilePicture: "profile.jpg",
-    name: "Dorji Sherpa",
+    profilePicture: "user.jpg",
+    name: "Robot 2.0",
     bio: "Enthusiastic student passionate about technology, community service, and campus events. Always eager to connect and collaborate!",
     major: "Computer Science",
     year: "Senior",
@@ -19,21 +19,21 @@ const UserProfile = () => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editableUser, setEditableUser] = useState({ ...user });
-  const [showSaveMessage, setShowSaveMessage] = useState(false); 
+  const [showSaveMessage, setShowSaveMessage] = useState(false);
 
   useEffect(() => {
     if (showSaveMessage) {
       const timer = setTimeout(() => {
         setShowSaveMessage(false);
-      }, 3000); 
-      return () => clearTimeout(timer); 
+      }, 3000);
+      return () => clearTimeout(timer);
     }
   }, [showSaveMessage]);
 
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
     if (!isEditing) {
-      setEditableUser({ ...user }); 
+      setEditableUser({ ...user });
     }
   };
 
@@ -70,9 +70,9 @@ const UserProfile = () => {
   };
 
   const handleSave = () => {
-    setUser({ ...editableUser }); 
+    setUser({ ...editableUser });
     setIsEditing(false);
-    setShowSaveMessage(true); 
+    setShowSaveMessage(true);
   };
 
   const handleProfilePictureUpload = (e) => {
