@@ -1,19 +1,22 @@
 /* Base styles for the main section */
 body {
   margin: 0;
-  background-color: rgb(202, 202, 202);
+  background-color: rgb(255, 255, 255);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
 }
 
 .exploreEvent {
-  padding-top: 7rem;
+  /* Adjusted padding to make sure it starts below the fixed navbar */
+  padding-top: calc(40px + 15px * 2 + 1rem);
+  /* ADDED padding for the sidebar on wider screens */
   padding-left: 10rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;
+  transition: padding-left 0.3s ease-in-out; /* Add a smooth transition for the padding */
 }
 
 /* Event Section Styling */
@@ -190,6 +193,11 @@ body {
 
 /* Responsive design adjustments for smaller screens */
 @media (max-width: 768px) {
+  .exploreEvent {
+    /* Adjusted padding for smaller screens where the sidebar is hidden */
+    padding-left: 2rem; /* Reduced padding for smaller screens */
+    padding-right: 2rem;
+  }
   .exploreEvent-container {
     gap: 0.5rem;
   }
@@ -202,5 +210,12 @@ body {
   }
   .exploreEvent-eventBox img {
     height: 180px;
+  }
+}
+
+/* This media query ensures the padding is applied only when the sidebar is visible */
+@media (min-width: 769px) {
+  .exploreEvent {
+    padding-left: 10rem;
   }
 }
