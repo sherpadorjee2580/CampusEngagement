@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
@@ -6,23 +5,22 @@ import {
   Route,
   useNavigate,
   Outlet,
-} from "react-router-dom"; // Import Outlet
+} from "react-router-dom"; 
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase";
+import "./App.css";
 import CampusCalendar from "./Components/CampusCalendar/CampusCalendar";
-
-// Import your components
 import Login from "./Components/Login/Login";
-import SignUp from "./Components/SignUp/SignUp"; // Adjust path if needed
-import Dashboard from "./Pages/Dashboard"; // Your Dashboard component (now a layout)
-import Feed from "./Components/Feed/Feed"; // Keep Feed if it's the default view
+import SignUp from "./Components/SignUp/SignUp"; 
+import Dashboard from "./Pages/Dashboard"; 
+import Feed from "./Components/Feed/Feed"; 
 import ExploreEvents from "./Components/ExploreEvents/ExploreEvents";
 import Communities from "./Components/CommunityHub/CommunityHub";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import NewEvent from "./Components/NewEvent/NewEvent";
 import CommunityHub from "./Components/CommunityHub/CommunityHub";
+import WebWelcome from "./Components/WebWelcome/WebWelcome";
 
-// PrivateRoute component (remains the same)
 const PrivateRoute = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -49,14 +47,24 @@ const PrivateRoute = ({ children }) => {
   return isAuthenticated ? children : null;
 };
 
+  
+
 function App() {
+  const [showWelcomeScreen, setShowWelcomeScreen] = useState(true);
+
+  const handleWelcomeTimeout = () => {
+    setShowWelcomeScreen(false);
+  };
+
+  if (showWelcomeScreen) {
+    return <WebWelcome onTimeout={handleWelcomeTimeout} />;
+  }
+  
   return (
     <Routes>
-      {/* Public Routes */}
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
 
-      {/* Protected Routes - Dashboard as a Layout */}
       <Route
         element={
           <PrivateRoute>
@@ -64,11 +72,8 @@ function App() {
           </PrivateRoute>
         }
       >
-        {/* Nested Routes will render within Dashboard's <Outlet /> */}
         <Route path="/" element={<Feed />} />{" "}
-        {/* Default content for / is Feed */}
         <Route path="/dashboard" element={<Feed />} />{" "}
-        {/* /dashboard also shows Feed */}
         <Route path="/explore-events" element={<ExploreEvents />} />
         <Route path="/communityhub" element={<CommunityHub />} />
         <Route path="/user-profile" element={<UserProfile />} />
@@ -77,7 +82,6 @@ function App() {
         <Route path="/new-event" element={<NewEvent />} />
       </Route>
 
-      {/* Catch-all for 404 Not Found */}
       <Route path="*" element={<div>404 - Page Not Found</div>} />
     </Routes>
   );

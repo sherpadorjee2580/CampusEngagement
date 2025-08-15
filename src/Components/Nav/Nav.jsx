@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  // State to hold the search input value
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleLogin = () => {
@@ -16,13 +15,11 @@ const Navbar = () => {
     navigate("/signup");
   };
 
-  // Function to handle the search submission
+  
   const handleSearch = (e) => {
     e.preventDefault();
     console.log("Searching for:", searchQuery);
-    // Here you would typically navigate to a search results page
-    // or filter a list of items based on the searchQuery.
-    // For example: navigate(`/search?query=${searchQuery}`);
+    
   };
 
   return (
