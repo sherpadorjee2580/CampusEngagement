@@ -1,5 +1,4 @@
-import React from "react";
-import "./Sidebar.css"; 
+import "./Sidebar.css";
 import {
   FaHome,
   FaCalendar,
@@ -21,7 +20,7 @@ const Sidebar = () => {
               </a>
             </li>
             <li class="sidebar-menu-item">
-              <a href="#" class="sidebar-menu-link">
+              <a href="explore-events" class="sidebar-menu-link">
                 <FaCalendar className="sidebar-icon" />
                 <span class="text-events">Events</span>
               </a>

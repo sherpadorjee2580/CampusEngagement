@@ -1,17 +1,19 @@
 import React from "react";
-import Nav from "../Components/Nav/Nav";
-import Footer from "../Components/Footer/Footer";
+import { Outlet } from "react-router-dom";
 import Sidebar from "../Components/Sidebar/Sidebar";
-import Feed from "../Components/Feed/Feed";
+import Nav from "../Components/Nav/Nav";
 
-const Dashboard = () => {
+function Dashboard() {
   return (
-    <div>
+    <div className="dashboard-layout">
       <Nav />
       <Sidebar />
-      <Feed />
+      <main>
+        <Outlet />{" "}
+        {/* This is where nested route content (Feed, ExploreEvents, etc.) will appear */}
+      </main>
     </div>
   );
-};
+}
 
 export default Dashboard;
