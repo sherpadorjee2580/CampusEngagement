@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import './webwelcome.css';
+import React, { useState, useEffect } from "react";
+import "./webwelcome.css";
 
 const WebWelcome = ({ onTimeout }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -10,10 +10,10 @@ const WebWelcome = ({ onTimeout }) => {
       if (onTimeout) {
         onTimeout();
       }
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timer);
-  }, [onTimeout]); 
+  }, [onTimeout]);
 
   if (!isVisible) {
     return null;
@@ -25,8 +25,9 @@ const WebWelcome = ({ onTimeout }) => {
         <div className="webwelcome-logo">
           <img src={"logo.png"} alt="Logo" />
         </div>
-        <p className="webwelcome-subtitle">Beyond the Classroom, a Connected Community</p>
-        {/* <p className="webwelcome-subtitle">and Social Campus Life</p> */}
+        <p className="webwelcome-subtitle">
+          Beyond the Classroom, a Connected Community
+        </p>
       </div>
     </div>
   );
