@@ -46,7 +46,7 @@ function App() {
       description: "Celebrate spring with music, food trucks, and art.",
       date: "August 15, 2025",
       time: "6:30am - 6:30pm",
-      location: "University Green",
+      location: "TCMIT",
       category: "Social",
     },
     {
@@ -56,7 +56,7 @@ function App() {
       description: "Workshops and networking with tech leaders.",
       date: "May 16, 2025",
       time: "9:00am - 5:00pm",
-      location: "Engineering Building Auditorium",
+      location: "BIT",
       category: "Academic",
     },
   ]);
