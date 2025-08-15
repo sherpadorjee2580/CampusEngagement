@@ -1,7 +1,6 @@
 import React from 'react'
-import './Hero.css'
 
-const Hero = () => {
+const ExploreEvents = () => {
   return (
     <div>
       
@@ -9,4 +8,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default ExploreEvents
