@@ -1,0 +1,172 @@
+/* Base styles for the main section */
+body {
+  margin: 0;
+  background-color: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Main container for the entire page */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Event Section Styling */
+.exploreEvent-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.exploreEvent-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.exploreEvent-description-main {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Filter form styling */
+.exploreEvent-filterForm {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.exploreEvent-filterForm input,
+.exploreEvent-filterForm select,
+.exploreEvent-filterForm button {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.exploreEvent-filterForm input {
+  flex-grow: 1; /* Allows search input to take up available space */
+}
+
+.exploreEvent-filterForm select {
+  min-width: 120px;
+}
+
+.exploreEvent-filterForm button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.exploreEvent-filterForm button:hover {
+  background-color: #0056b3;
+}
+
+/* Event grid layout using CSS Grid for responsiveness */
+.exploreEvent-eventBoxContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Individual event card styling */
+.exploreEvent-eventBox {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.exploreEvent-eventBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.exploreEvent-eventBox img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.exploreEvent-eventName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1rem 1rem 0.5rem 1rem;
+  color: #333;
+}
+
+.exploreEvent-eventDescription {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0 1rem 1rem 1rem;
+  line-height: 1.4;
+}
+
+.exploreEvent-eventDate,
+.exploreEvent-eventTime,
+.exploreEvent-eventLocation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 1rem 0.5rem 1rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.exploreEvent-eventBoxText {
+  color: #555;
+}
+
+.exploreEvent-eventDateLogo,
+.exploreEvent-eventLocationLogo {
+  display: none;
+}
+
+.exploreEvent-eventCategory {
+  background-color: #e6f7ff;
+  color: #007bff;
+  border: 1px solid #b3d9ff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  margin: 1rem;
+  align-self: flex-start;
+}
+
+/* Responsive design adjustments for smaller screens */
+@media (max-width: 768px) {
+  .exploreEvent-container {
+    gap: 0.5rem;
+  }
+  .exploreEvent-filterForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .exploreEvent-eventBoxContainer {
+    grid-template-columns: 1fr;
+  }
+  .exploreEvent-eventBox img {
+    height: 180px;
+  }
+}
