@@ -10,51 +10,51 @@ import {
   OAuthProvider, 
 } from "firebase/auth";
 import { auth, db } from "../../firebase"; 
-import { doc, setDoc } from "firebase/firestore"; // Import Firestore functions
+import { doc, setDoc } from "firebase/firestore"; 
 
 const SignUp = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null); // State for displaying errors
-  const [loading, setLoading] = useState(false); // State for loading indicator
+  const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(false); 
 
-  // Providers for social logins
+  
   const googleProvider = new GoogleAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
-  const appleProvider = new OAuthProvider("apple.com"); // For Apple Sign-in
+  const appleProvider = new OAuthProvider("apple.com");
 
-  // Function to save user data to Firestore
+  
   const saveUserProfileToFirestore = async (user) => {
     try {
-      // Use the user's UID as the document ID for their profile
+      
       await setDoc(
         doc(db, "users", user.uid),
         {
           email: user.email,
-          displayName: user.displayName || "", // Use display name if available from social login
+          displayName: user.displayName || "",
           createdAt: new Date(),
-          // Add other default profile fields here
+          
           bio: "",
           university: "",
-          // You'll expand this as you implement "Personal Details" and "University Affiliation"
+        
         },
         { merge: true }
-      ); // Use merge: true to avoid overwriting existing fields if they sign up via different methods
+      ); 
       console.log("User profile saved to Firestore for UID:", user.uid);
     } catch (firestoreError) {
       console.error("Error saving user profile to Firestore:", firestoreError);
-      setError("Failed to save profile data."); // Don't block sign-up, but notify
+      setError("Failed to save profile data."); 
     }
   };
 
   const handleEmailSignUp = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-    setError(null); // Clear previous errors
-    setLoading(true); // Start loading
+    e.preventDefault(); 
+    setError(null); 
+    setLoading(true); 
 
     try {
-      // 1. Create user with email and password
+      
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -62,14 +62,13 @@ const SignUp = () => {
       );
       const user = userCredential.user;
 
-      // 2. Save user profile to Firestore
       await saveUserProfileToFirestore(user);
 
       console.log("Email signup successful:", user);
-      // Navigate to the next step or dashboard
-      navigate("/"); // Or '/signup/personal-details' if multi-step form
+      
+      navigate("/"); 
     } catch (err) {
-      // Handle Firebase authentication errors for email/password
+      
       let errorMessage = "An unknown error occurred.";
       switch (err.code) {
         case "auth/email-already-in-use":
@@ -87,7 +86,7 @@ const SignUp = () => {
       }
       setError(errorMessage);
     } finally {
-      setLoading(false); // End loading
+      setLoading(false); 
     }
   };
 
@@ -96,17 +95,17 @@ const SignUp = () => {
     setLoading(true);
 
     try {
-      // 1. Sign in with popup for social providers
+      
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
 
-      // 2. Save user profile to Firestore
+      
       await saveUserProfileToFirestore(user);
 
       console.log("Social signup successful:", user);
-      navigate("/dashboard"); // Navigate to dashboard after successful social login
+      navigate("/dashboard");
     } catch (err) {
-      // Handle social login errors
+      
       let errorMessage = "Social sign-up failed. Please try again.";
       switch (err.code) {
         case "auth/popup-closed-by-user":
@@ -178,7 +177,6 @@ const SignUp = () => {
 
         <form className="signup-form" onSubmit={handleEmailSignUp}>
           {" "}
-          {/* Use form for email/password */}
           <div className="form-group">
             <label htmlFor="email">Email Address</label>
             <input
@@ -211,7 +209,7 @@ const SignUp = () => {
             {loading ? "Signing up..." : "Next"}
           </button>
           {error && <p className="signup-error-message">{error}</p>}{" "}
-          {/* Display errors */}
+          
         </form>
 
         <p className="signup-login-link">
