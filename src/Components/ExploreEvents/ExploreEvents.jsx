@@ -107,69 +107,59 @@ const ExploreEvents = () => {
   ];
 
   return (
-    <div className="main-container">
-      {/* Start of the Explore Events section */}
-      <div className="exploreEvent">
-        <div className="exploreEvent-container">
-          <span className="exploreEvent-title">Explore Campus Events</span>
-          <span className="exploreEvent-description-main">
-            Discover and participate in a wide range of campus activities and
-            gatherings.
-          </span>
-          {/* Start of the filter form section */}
-          <div className="exploreEvent-filterForm">
-            <input type="text" placeholder="Search for events..." />
-            <select>
-              <option value="">Date</option>
-              {/* Add date options here */}
-            </select>
-            <select>
-              <option value="">Category</option>
-              {/* Add category options here */}
-            </select>
-            <select>
-              <option value="">Location</option>
-              {/* Add location options here */}
-            </select>
-            <button>Apply Filters</button>
-          </div>
-          {/* End of the filter form section */}
+    <div className="exploreEvent">
+      <div className="exploreEvent-container">
+        <span className="exploreEvent-title">Explore Campus Events</span>
+        <span className="exploreEvent-description-main">
+          Discover and participate in a wide range of campus activities and
+          gatherings.
+        </span>
+        {/* Start of the filter form section */}
+        <div className="exploreEvent-filterForm">
+          <input type="text" placeholder="Search for events..." />
+          <select>
+            <option value="">Date</option>
+            {/* Add date options here */}
+          </select>
+          <select>
+            <option value="">Category</option>
+            {/* Add category options here */}
+          </select>
+          <select>
+            <option value="">Location</option>
+            {/* Add location options here */}
+          </select>
+          <button>Apply Filters</button>
+        </div>
+        {/* End of the filter form section */}
 
-          <div className="exploreEvent-eventBoxContainer">
-            {eventsData.map((event) => (
-              <div className="exploreEvent-eventBox" key={event.id}>
-                <img src={event.image} alt={event.name} />
-                <span className="exploreEvent-eventName">{event.name}</span>
-                <span className="exploreEvent-eventDescription">
-                  {event.description}
-                </span>
-                <div className="exploreEvent-eventDate">
-                  <div className="exploreEvent-eventDateLogo"></div>
-                  <span className="exploreEvent-eventBoxText">
-                    {event.date}
-                  </span>
-                </div>
-                <div className="exploreEvent-eventTime">
-                  <div className="exploreEvent-eventDateLogo"></div>
-                  <span className="exploreEvent-eventBoxText">
-                    {event.time}
-                  </span>
-                </div>
-                <div className="exploreEvent-eventLocation">
-                  <div className="exploreEvent-eventLocationLogo"></div>
-                  <span className="exploreEvent-eventBoxText">
-                    {event.location}
-                  </span>
-                </div>
-                <div className="exploreEvent-eventCategory">
-                  {event.category}
-                </div>
+        <div className="exploreEvent-eventBoxContainer">
+          {eventsData.map((event) => (
+            <div className="exploreEvent-eventBox" key={event.id}>
+              <img src={event.image} alt={event.name} />
+              <span className="exploreEvent-eventName">{event.name}</span>
+              <span className="exploreEvent-eventDescription">
+                {event.description}
+              </span>
+              <div className="exploreEvent-eventDate">
+                <div className="exploreEvent-eventDateLogo"></div>
+                <span className="exploreEvent-eventBoxText">{event.date}</span>
               </div>
-            ))}
-          </div>
+              <div className="exploreEvent-eventTime">
+                <div className="exploreEvent-eventDateLogo"></div>
+                <span className="exploreEvent-eventBoxText">{event.time}</span>
+              </div>
+              <div className="exploreEvent-eventLocation">
+                <div className="exploreEvent-eventLocationLogo"></div>
+                <span className="exploreEvent-eventBoxText">
+                  {event.location}
+                </span>
+              </div>
+              <div className="exploreEvent-eventCategory">{event.category}</div>
+            </div>
+          ))}
         </div>
       </div>
-      {/* End of the Explore Events section */}
     </div>
   );
 };
