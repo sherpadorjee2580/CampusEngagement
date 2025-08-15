@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import React, { useState } from "react";
->>>>>>> 89438745cbca2d3caff8aa4574bddd48c6ffbe72
 import "./Nav.css";
 import { IoMdSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
@@ -33,12 +30,6 @@ const Navbar = () => {
       <div className="navbar-container">
         <div className="navbar-logo">
           <img src="logo.png" alt="Logo" />
-        </div>
-        <div className="navbar-links">
-          <a href="#home">Home</a>
-          <a href="#events">Events</a>
-          <a href="#communities">Communities</a>
-          <a href="">Services</a>
         </div>
 
         {/* Search bar section */}
