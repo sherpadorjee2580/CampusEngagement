@@ -1,3 +1,4 @@
+
 import React from "react";
 import "./App.css";
 import CommunityHub from "./Components/CommunityHub/CommunityHub";
@@ -7,10 +8,12 @@ import ExploreEvents from "./Components/ExploreEvents/ExploreEvents";
 import Feed from "./Components/Feed/Feed";
 import Login from "./Components/Login/Login";
 import Sidebar from "./Components/Sidebar/Sidebar"; // Importing the Sidebar component
+import Nav from "./Components/Nav/Nav"
 
 const App = () => {
   return (
     <div>
+      <Nav/>
       <Feed />
       <Login />
       <Sidebar />
