@@ -7,7 +7,7 @@ const ExploreEvents = () => {
   const eventsData = [
     {
       id: 1,
-      image: "https://placehold.co/600x400/9b59b6/ffffff?text=Campus+Festival",
+      image: "event1.jpg",
       name: "Annual Campus Spring Festival",
       description:
         "Celebrate the arrival of spring with live music, food trucks, and local artisan booths. A day of fun for the whole campus community!",
@@ -18,7 +18,7 @@ const ExploreEvents = () => {
     },
     {
       id: 2,
-      image: "https://placehold.co/600x400/3498db/ffffff?text=Tech+Summit",
+      image: "event2.jpg",
       name: "Tech Innovation Summit",
       description:
         "Explore the latest in technology with workshops, expert speakers, and a startup showcase. Network with future leaders in tech.",
@@ -29,8 +29,7 @@ const ExploreEvents = () => {
     },
     {
       id: 3,
-      image:
-        "https://placehold.co/600x400/2ecc71/ffffff?text=Soccer+Tournament",
+      image: "event3.jpg",
       name: "Intramural Soccer Tournament",
       description:
         "Cheer on your favorite teams as they compete for the championship title. Great food and a lively atmosphere for all spectators.",
@@ -41,7 +40,7 @@ const ExploreEvents = () => {
     },
     {
       id: 4,
-      image: "https://placehold.co/600x400/f1c40f/333333?text=Open+Mic",
+      image: "event4.jpg",
       name: "Open Mic Night",
       description:
         "Share your talents or enjoy performances from your peers. A relaxed evening of music, poetry, and comedy.",
@@ -52,7 +51,7 @@ const ExploreEvents = () => {
     },
     {
       id: 5,
-      image: "https://placehold.co/600x400/e74c3c/ffffff?text=Career+Workshop",
+      image: "event5.jpg",
       name: "Career Development Workshop",
       description:
         "Boost your resume, master interview skills, and network with professionals from various industries. Your next career move starts here.",
@@ -63,7 +62,7 @@ const ExploreEvents = () => {
     },
     {
       id: 6,
-      image: "https://placehold.co/600x400/95a5a6/ffffff?text=Art+Showcase",
+      image: "event6.jpg",
       name: "Student Art Showcase",
       description:
         "Discover the creativity of our student artists. Paintings, sculptures, and digital art will be on display.",
@@ -74,7 +73,7 @@ const ExploreEvents = () => {
     },
     {
       id: 7,
-      image: "https://placehold.co/600x400/34495e/ffffff?text=Sustainability",
+      image: "event7.jpg",
       name: "Sustainability Seminar",
       description:
         "Learn about environmental initiatives on campus and how you can make a difference. Guest speakers and hands-on activities.",
@@ -85,7 +84,7 @@ const ExploreEvents = () => {
     },
     {
       id: 8,
-      image: "https://placehold.co/600x400/1abc9c/ffffff?text=Cooking+Class",
+      image: "event3.jpg",
       name: "Campus Cooking Class: Italian Delights",
       description:
         "Master the art of Italian cuisine with a hands-on cooking class led by a professional chef. Buon Appetito!",
@@ -96,7 +95,7 @@ const ExploreEvents = () => {
     },
     {
       id: 9,
-      image: "https://placehold.co/600x400/f39c12/ffffff?text=Book+Club",
+      image: "event2.jpg",
       name: "Summer Book Club Kick-off",
       description:
         "Join us to discuss our first summer read and meet fellow book lovers. Snacks and refreshments will be provided.",
