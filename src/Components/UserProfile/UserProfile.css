@@ -1,0 +1,412 @@
+/* UserProfile.css */
+
+/* General container for the entire profile section */
+.userProfile {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to the top */
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Light background for the page */
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+/* Inner container for the profile card */
+.userProfile-container {
+  background-color: #ffffff;
+  padding: 35px 45px;
+  border-radius: 15px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px; /* Max width for the profile card */
+  box-sizing: border-box;
+  margin-top: 20px; /* Space from the top if not centered vertically */
+}
+
+/* Profile header section (avatar, name, edit button) */
+.userProfile-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* Avatar container for positioning image and upload overlay */
+.userProfile-avatarContainer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevent avatar from shrinking */
+}
+
+/* Profile picture image */
+.userProfile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hidden file input for picture upload */
+.userProfile-fileInput {
+  display: none;
+}
+
+/* Overlay for picture upload icon/button */
+.userProfile-uploadOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.userProfile-avatarContainer:hover .userProfile-uploadOverlay {
+  opacity: 1;
+}
+
+.userProfile-uploadIcon {
+  font-size: 40px;
+  color: #ffffff;
+}
+
+/* User information (name, email) beside avatar */
+.userProfile-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the left */
+}
+
+.userProfile-name {
+  font-size: 32px;
+  color: #333333;
+  margin: 0 0 5px 0;
+  font-weight: 700;
+}
+
+.userProfile-nameInput {
+  font-size: 32px;
+  font-weight: 700;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  width: calc(100% - 20px); /* Account for padding */
+}
+
+.userProfile-email {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 15px;
+}
+
+/* Edit and Save buttons */
+.userProfile-editButton,
+.userProfile-saveButton {
+  background-color: #6a5acd; /* Primary accent color */
+  color: #ffffff;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.userProfile-editButton:hover,
+.userProfile-saveButton:hover {
+  background-color: #5544b8;
+  transform: translateY(-1px);
+}
+
+/* Individual profile sections */
+.userProfile-section {
+  margin-bottom: 30px;
+}
+
+.userProfile-sectionTitle {
+  font-size: 22px;
+  color: #444444;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 8px;
+  font-weight: 600;
+}
+
+.userProfile-text {
+  font-size: 16px;
+  color: #555555;
+  line-height: 1.6;
+}
+
+.userProfile-textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333333;
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.userProfile-textarea:focus {
+  border-color: #6a5acd;
+  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.2);
+  outline: none;
+}
+
+/* Details Grid for Major, Year */
+.userProfile-detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.userProfile-detailItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userProfile-detailLabel {
+  font-size: 16px;
+  color: #666666;
+  font-weight: 600;
+}
+
+.userProfile-detailValue {
+  font-size: 16px;
+  color: #333333;
+}
+
+.userProfile-input {
+  width: calc(100% - 24px); /* Account for padding */
+  padding: 10px 12px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333333;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.userProfile-input:focus {
+  border-color: #6a5acd;
+  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.2);
+  outline: none;
+}
+
+/* Interests tags */
+.userProfile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.userProfile-tag {
+  background-color: #e0e7ff; /* Light accent background */
+  color: #4a3e9c; /* Darker accent text */
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Campus Clubs list */
+.userProfile-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.userProfile-listItem {
+  font-size: 16px;
+  color: #555555;
+  margin-bottom: 8px;
+  padding-left: 25px; /* Space for a custom bullet */
+  position: relative;
+}
+
+.userProfile-listItem::before {
+  content: "•"; /* Custom bullet point */
+  color: #6a5acd;
+  font-size: 20px;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+/* Social media links */
+.userProfile-socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 25px;
+  align-items: center;
+}
+
+.userProfile-socialLink {
+  color: #6a5acd;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.userProfile-socialLink:hover {
+  color: #5544b8;
+  text-decoration: underline;
+}
+
+.userProfile-socialLink i {
+  font-size: 18px; /* For Font Awesome icons */
+}
+
+.userProfile-socialInputGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.userProfile-socialInputGroup:last-child {
+  margin-bottom: 0;
+}
+
+.userProfile-socialLabel {
+  font-size: 16px;
+  color: #666666;
+  font-weight: 600;
+  min-width: 80px; /* Align labels */
+}
+/* UserProfile.css */
+
+/* ... (previous CSS code remains unchanged until here) ... */
+
+/* New CSS for the save success message */
+.userProfile-saveMessage {
+  position: fixed; /* Fixed position relative to the viewport */
+  bottom: 30px; /* 30px from the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for true centering */
+  background-color: #4caf50; /* Green background */
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it's above other content */
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0; /* Start hidden */
+  animation: fadeInOut 3s forwards; /* Animation to fade in and out */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space for the emoji */
+}
+
+/* Keyframes for fade in and out animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px); /* Start slightly below */
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* Fade in and move up */
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px); /* Fade out and move down */
+  }
+}
+
+/* ... (rest of your CSS code remains unchanged) ... */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .userProfile-container {
+    padding: 25px 30px;
+  }
+
+  .userProfile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .userProfile-info {
+    align-items: center;
+  }
+
+  .userProfile-name {
+    font-size: 28px;
+  }
+
+  .userProfile-nameInput {
+    font-size: 28px;
+  }
+
+  .userProfile-detailsGrid {
+    grid-template-columns: 1fr; /* Stack items vertically */
+  }
+
+  .userProfile-detailItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .userProfile-socialInputGroup {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .userProfile-container {
+    padding: 20px 20px;
+  }
+
+  .userProfile-name {
+    font-size: 24px;
+  }
+
+  .userProfile-nameInput {
+    font-size: 24px;
+  }
+
+  .userProfile-sectionTitle {
+    font-size: 20px;
+  }
+
+  .userProfile-editButton,
+  .userProfile-saveButton {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

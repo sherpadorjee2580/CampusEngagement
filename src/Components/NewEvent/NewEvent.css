@@ -1,0 +1,221 @@
+/* NewEventForm.css */
+
+.newEvent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Light background for the page */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.newEvent-container {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 700px; /* Adjust max-width as needed */
+  box-sizing: border-box;
+}
+
+.newEvent-title {
+  font-size: 28px;
+  color: #333333;
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.newEvent-subtitle {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.newEvent-formGroup {
+  margin-bottom: 25px;
+}
+
+.newEvent-label {
+  display: block;
+  font-size: 15px;
+  color: #333333;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.newEvent-input,
+.newEvent-textarea,
+.newEvent-select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333333;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.newEvent-input::placeholder,
+.newEvent-textarea::placeholder {
+  color: #aaaaaa;
+}
+
+.newEvent-input:focus,
+.newEvent-textarea:focus,
+.newEvent-select:focus {
+  border-color: #6a5acd; /* Example accent color */
+  box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.2);
+  outline: none;
+}
+
+.newEvent-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.newEvent-twoColumn {
+  display: flex;
+  gap: 20px;
+}
+
+.newEvent-column {
+  flex: 1;
+}
+
+.newEvent-select {
+  appearance: none; /* Remove default browser select arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-24.8%200L146.2%20185.6%2030.8%2069.4a17.6%2017.6%200%200%200-24.8%2024.8l130.4%20130.4c6.8%206.8%2017.6%206.8%2024.4%200l130.4-130.4c6.8-6.8%206.8-17.6%200-24.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+  padding-right: 35px; /* Make space for the custom arrow */
+}
+
+.newEvent-imageUploadContainer {
+  border: 2px dashed #dddddd;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px; /* Minimum height for the upload area */
+  position: relative;
+  overflow: hidden; /* Hide overflow for the image */
+}
+
+.newEvent-imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999999;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  background-image: url("https://via.placeholder.com/600x200/F0F2F5/CCCCCC?text=University+Campus"); /* Placeholder for the image in the screenshot */
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+}
+
+.newEvent-uploadedImage {
+  max-width: 100%;
+  max-height: 200px; /* Max height for the uploaded image */
+  object-fit: contain;
+  border-radius: 8px;
+  z-index: 1; /* Ensure image is above placeholder text if any */
+}
+
+.newEvent-fileInput {
+  display: none; /* Hide the default file input */
+}
+
+.newEvent-uploadButton {
+  background-color: #6a5acd;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 15px; /* Space between placeholder/image and button */
+  z-index: 2; /* Ensure button is clickable */
+}
+
+.newEvent-uploadButton:hover {
+  background-color: #5544b8;
+}
+
+.newEvent-actions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.newEvent-cancelButton,
+.newEvent-createButton {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.newEvent-cancelButton {
+  background-color: #e0e0e0;
+  color: #555555;
+}
+
+.newEvent-cancelButton:hover {
+  background-color: #d0d0d0;
+}
+
+.newEvent-createButton {
+  background-color: #28a745; /* Green for create button */
+  color: #ffffff;
+}
+
+.newEvent-createButton:hover {
+  background-color: #218838;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .newEvent-container {
+    padding: 20px 25px;
+  }
+
+  .newEvent-twoColumn {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .newEvent-column:first-child {
+    margin-bottom: 25px; /* Add space between stacked columns */
+  }
+
+  .newEvent-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .newEvent-cancelButton,
+  .newEvent-createButton {
+    width: 100%;
+  }
+}
