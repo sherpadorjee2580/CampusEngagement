@@ -7,9 +7,9 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   FacebookAuthProvider,
-  OAuthProvider, // For Apple
+  OAuthProvider, 
 } from "firebase/auth";
-import { auth, db } from "../../firebase"; // Import auth and db
+import { auth, db } from "../../firebase"; 
 import { doc, setDoc } from "firebase/firestore"; // Import Firestore functions
 
 const SignUp = () => {

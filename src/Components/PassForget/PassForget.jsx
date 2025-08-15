@@ -6,7 +6,6 @@ const Forward = () => {
     <div className="forward">
       <div className="forward-container">
         <div className="forward-logo">
-          {/* Placeholder for the logo */}
           <div className="logo-placeholder">★ logo</div>
         </div>
         <div className="forward-title">Forgot Password?</div>
