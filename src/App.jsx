@@ -96,11 +96,11 @@ function App() {
     <>
       <Navbar isAuthenticated={!!currentUser} />
       <Routes>
-        {/* Public */}
+        
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
 
-        {/* Protected */}
+        
         <Route
           element={
             <PrivateRoute>
@@ -108,7 +108,7 @@ function App() {
             </PrivateRoute>
           }
         >
-          {/* Default dashboard route */}
+          
           <Route index element={<Feed />} />
           <Route path="feed" element={<Feed />} />
           <Route path="explore-events" element={<ExploreEvents />} />
@@ -118,7 +118,7 @@ function App() {
           <Route path="new-event" element={<NewEvent />} />
         </Route>
 
-        {/* Root: go to feed if logged in, else login */}
+        
         <Route
           path="/"
           element={
@@ -130,7 +130,7 @@ function App() {
           }
         />
 
-        {/* 404 */}
+        
         <Route path="*" element={<div>404 - Page Not Found</div>} />
       </Routes>
     </>
