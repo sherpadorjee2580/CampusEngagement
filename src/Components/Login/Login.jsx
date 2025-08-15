@@ -1,7 +1,14 @@
 import React from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleSignUp = () => {
+    navigate("/signup");
+  };
+
   return (
     <div className="login">
       <div className="login-container">
@@ -46,7 +53,7 @@ const Login = () => {
 
         <div className="login-signup">
           <span>
-            Don't have an account? <a href="#">Sign up</a>
+            Don't have an account? <a onClick={handleSignUp}>Sign up</a>
           </span>
         </div>
       </div>

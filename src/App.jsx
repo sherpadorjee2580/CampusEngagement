@@ -8,8 +8,10 @@ import Feed from "./Components/Feed/Feed";
 import Login from "./Components/Login/Login";
 import Sidebar from "./Components/Sidebar/Sidebar"; // Importing the Sidebar component
 import Nav from "./Components/Nav/Nav";
+import SignUp from "./Components/SignUp/SignUp";
 import Dashboard from "./Pages/Dashboard";
 import { Route, Link, Routes } from "react-router-dom";
+
 
 const App = () => {
   return (
@@ -21,6 +23,7 @@ const App = () => {
       <Route path="/user-profile" element={<UserProfile />} />
       <Route path="/explore-events" element={<ExploreEvents />} />
       <Route path="/feed" element={<Feed />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   );
 };

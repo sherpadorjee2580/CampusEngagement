@@ -1,0 +1,204 @@
+.signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: whitesmoke;
+  font-family: 'Poppins', sans-serif;
+}
+
+.signup-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.signup-logo img {
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.signup-main-title {
+  color: #343a40;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.signup-subtitle {
+  color: #6c757d;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+.signup-steps {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.signup-steps button {
+  border: none;
+  background-color: transparent;
+  color: #adb5bd;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.signup-steps button.step-active {
+  color: #007bff;
+  border-bottom-color: #007bff;
+}
+
+.signup-welcome {
+  color: #28a745;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.signup-choose {
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.signup-social-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.social-button:hover {
+  background-color: #f0f0f0;
+  border-color: #999;
+}
+
+.social-button.google {
+  color: #db4437;
+  border-color: #db4437;
+}
+
+.social-button.google:hover {
+  background-color: #f9eded;
+}
+
+.social-button.facebook {
+  color: #1877f2;
+  border-color: #1877f2;
+}
+
+.social-button.facebook:hover {
+  background-color: #e7f3ff;
+}
+
+.social-button.apple {
+  color: #000;
+  border-color: #000;
+}
+
+.social-button.apple:hover {
+  background-color: #e0e0e0;
+}
+
+.social-icon {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.signup-apple-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.signup-or {
+  color: #6c757d;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  color: #343a40;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input {
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.signup-next-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.signup-next-button:hover {
+  background-color: #0056b3;
+}
+
+.signup-login-link {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.signup-login-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-login-link a:hover {
+  text-decoration: underline;
+}
