@@ -95,7 +95,7 @@
   border-radius: 8px;
   padding: 5px 10px;
   margin-bottom: 5px;
-  width: calc(100% - 20px); /* Account for padding */
+  width: calc(100% - 20px); 
 }
 
 .userProfile-email {

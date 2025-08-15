@@ -1,38 +1,34 @@
-/* Base styling for the navbar */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   background-color: #fff;
   border-bottom: 1px solid #e0e0e0;
-  padding: 15px 40px; /* Increased padding for more space */
+  padding: 15px 40px; 
   font-family: "Poppins", sans-serif;
   z-index: 1000;
   width: 100vw;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Added subtle shadow */
-  box-sizing: border-box; /* Ensures padding doesn't add to the width */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+  box-sizing: border-box; 
 }
 
-/* Container to hold all navbar components */
 .navbar-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
-  gap: 30px; /* Adjusted gap to be flexible */
+  gap: 30px; 
 }
 
-/* Logo styling */
 .navbar-logo img {
-  width: 45px; /* Slightly larger logo */
+  width: 45px; 
 }
 
-/* Navigation links section */
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 40px; /* Adjusted gap for better spacing */
+  gap: 40px; 
 }
 
 .navbar-links a {
@@ -46,18 +42,17 @@
   color: #17a2b8;
 }
 
-/* Updated search bar styling to be more centered and clean */
 .navbar-search {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 40px;
-  width: 450px; /* Adjusted width */
+  width: 450px; 
   border-radius: 20px;
-  border: 1px solid #ddd; /* Lighter border color */
+  border: 1px solid #ddd; 
   padding: 0 15px;
-  background-color: #f7f7f7; /* Light gray background */
-  flex-grow: 1; /* Allows it to take up available space */
+  background-color: #f7f7f7;
+  flex-grow: 1; 
 }
 
 .search-box {
@@ -69,7 +64,7 @@
 }
 
 .search-icon {
-  color: #888; /* Lighter icon color */
+  color: #888; 
   font-size: 18px;
 }
 
@@ -90,9 +85,9 @@
 }
 
 .add-event-btn {
-  background-color: #fff; /* Changed to white background */
-  color: #17a2b8; /* Blue text color */
-  border: 1px solid #17a2b8; /* Added a blue border */
+  background-color: #fff; 
+  color: #17a2b8; 
+  border: 1px solid #17a2b8; 
   padding: 10px 20px;
   border-radius: 20px;
   cursor: pointer;
@@ -118,18 +113,13 @@
 .auth-link:hover {
   color: #17a2b8;
 }
-/* ------------------------------------------- */
-/* Media Queries                 */
-/* ------------------------------------------- */
 
-/* For screens smaller than 1024px (e.g., tablets) */
 @media (max-width: 1024px) {
   .navbar-container {
     padding: 0 20px;
   }
 }
 
-/* For screens smaller than 768px (e.g., mobile phones) */
 @media (max-width: 768px) {
   .navbar {
     padding: 10px 20px;

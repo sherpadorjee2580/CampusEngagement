@@ -1,31 +1,28 @@
 import React, { useState } from "react";
-import "./Feed.css"; // Import the CSS file
+import "./Feed.css";
 
 const Feed = () => {
-  // State to manage posts in the feed
   const [posts, setPosts] = useState([
     {
       id: 1,
       author: "Alice Chen",
-      authorAvatar: "https://via.placeholder.com/40/f4a460/ffffff?text=AC", // Placeholder for Alice's avatar
+      authorAvatar: "https://via.placeholder.com/40/f4a460/ffffff?text=AC",
       time: "2 hours ago",
       imageUrl:
-        "https://via.placeholder.com/700x400/87CEEB/FFFFFF?text=Campus+Connect+Design+Hub", // Image from your screenshot
-      title: "Welcome to the Campus Connect Design Hub!", // Title from your screenshot
+        "https://via.placeholder.com/700x400/87CEEB/FFFFFF?text=Campus+Connect+Design+Hub",
+      title: "Welcome to the Campus Connect Design Hub!",
       content:
         "Hello everyone! 👋 I'm Alice, thrilled to kick off this journey with you. This space is all about bringing together creative minds who are passionate about UI/UX design, collaboration, learning, and sharing innovative ideas. Let's build something amazing together! Feel free to introduce yourselves and share what you're working on.", // Content from your screenshot
-      likes: 128, // Likes from your screenshot
-      comments: 32, // Comments from your screenshot
-      shares: 15, // Shares from your screenshot
+      likes: 128,
+      comments: 32,
+      shares: 15,
       likedByMe: false,
     },
-    // You can add more initial posts here if needed
   ]);
 
-  // State for the new post input
   const [newPostContent, setNewPostContent] = useState("");
-  const [newPostImage, setNewPostImage] = useState(null); // For image file
-  const [newPostImagePreview, setNewPostImagePreview] = useState(""); // For image preview URL
+  const [newPostImage, setNewPostImage] = useState(null);
+  const [newPostImagePreview, setNewPostImagePreview] = useState("");
 
   const handlePostContentChange = (e) => {
     setNewPostContent(e.target.value);
@@ -50,18 +47,18 @@ const Feed = () => {
     if (newPostContent.trim() || newPostImage) {
       const newPost = {
         id: posts.length + 1,
-        author: "Your Name", // Replace with dynamic user data
-        authorAvatar: "https://via.placeholder.com/40/6a5acd/ffffff?text=YN", // Replace with dynamic user avatar
+        author: "Your Name",
+        authorAvatar: "https://via.placeholder.com/40/6a5acd/ffffff?text=YN",
         time: "Just now",
         imageUrl: newPostImagePreview,
-        title: "", // New posts typically don't have a title unless added later
+        title: "",
         content: newPostContent.trim(),
         likes: 0,
         comments: 0,
         shares: 0,
         likedByMe: false,
       };
-      setPosts([newPost, ...posts]); // Add new post to the top
+      setPosts([newPost, ...posts]);
       setNewPostContent("");
       setNewPostImage(null);
       setNewPostImagePreview("");
@@ -137,7 +134,6 @@ const Feed = () => {
           </button>
         </div>
 
-        {/* Feed Posts */}
         <div className="feed-posts">
           {posts.map((post) => (
             <div key={post.id} className="feed-postCard">

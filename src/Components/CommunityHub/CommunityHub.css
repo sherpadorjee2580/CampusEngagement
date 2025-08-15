@@ -1,6 +1,4 @@
-/* CommunityHub.css - Namespaced to avoid conflicts */
 
-/* Reset and base styles for community hub only */
 .communityHub * {
   box-sizing: border-box;
 }
