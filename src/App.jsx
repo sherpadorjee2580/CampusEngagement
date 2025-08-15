@@ -9,6 +9,7 @@ import Login from "./Components/Login/Login";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Nav from "./Components/Nav/Nav";
 import PassForget from "./Components/PassForget/PassForget";
+import SignUp from "./Components/SignUp/SignUp";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Nav />
       <Feed />
       <Login />
+      <SignUp />
       <Sidebar />
       <PassForget />
     </div>
