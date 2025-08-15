@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; // Import useEffect
+import React, { useState, useEffect } from "react"; 
 import "./UserProfile.css";
 
 const UserProfile = () => {
@@ -19,22 +19,21 @@ const UserProfile = () => {
 
   const [isEditing, setIsEditing] = useState(false);
   const [editableUser, setEditableUser] = useState({ ...user });
-  const [showSaveMessage, setShowSaveMessage] = useState(false); // New state for the message
+  const [showSaveMessage, setShowSaveMessage] = useState(false); 
 
-  // Effect to hide the message after a few seconds
   useEffect(() => {
     if (showSaveMessage) {
       const timer = setTimeout(() => {
         setShowSaveMessage(false);
-      }, 3000); // Message disappears after 3 seconds
-      return () => clearTimeout(timer); // Clear timeout if component unmounts or state changes
+      }, 3000); 
+      return () => clearTimeout(timer); 
     }
   }, [showSaveMessage]);
 
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
     if (!isEditing) {
-      setEditableUser({ ...user }); // Reset editableUser if canceling edit
+      setEditableUser({ ...user }); 
     }
   };
 
@@ -71,11 +70,9 @@ const UserProfile = () => {
   };
 
   const handleSave = () => {
-    setUser({ ...editableUser }); // Save changes to the main user state
+    setUser({ ...editableUser }); 
     setIsEditing(false);
-    // In a real app, you'd send 'editableUser' data to your backend API here
-    // alert("Profile saved!"); // REMOVE THIS LINE
-    setShowSaveMessage(true); // Show the success message
+    setShowSaveMessage(true); 
   };
 
   const handleProfilePictureUpload = (e) => {
@@ -294,14 +291,11 @@ const UserProfile = () => {
                     <i className="fab fa-twitter"></i> Twitter
                   </a>
                 )}
-                {/* Add more social links as needed */}
               </>
             )}
           </div>
         </div>
       </div>
-
-      {/* The new save success message component */}
       {showSaveMessage && (
         <div className="userProfile-saveMessage">
           Profile successfully saved! 🎉
